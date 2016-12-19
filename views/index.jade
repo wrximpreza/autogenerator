@@ -20,8 +20,8 @@ block content
                     div.input-field.col.s12.m12
                         label  Select country
                         select(name="country" id="country")
-                            for country in country_list
-                                option(value=country) #{country}
+                            for country in countries
+                                option(value=country.code) #{country.name}
                     div.col.s12.m12
                         input.waves-effect.waves-light.btn(type="submit" name="submit" )
 
