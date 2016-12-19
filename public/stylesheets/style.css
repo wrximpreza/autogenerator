@@ -1,0 +1,19 @@
+body {
+  font: 14px Arial, Helvetica, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.browser-default {
+  font-size: 14px;
+}
+.btn {
+  font-size: 14px;
+  float: right;
+  margin-top: 15px;
+}
+.block_1 {
+  width: 300px;
+  height: 50px;
+  background: #9da1aa;
+}

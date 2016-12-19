@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    div.container
+        div.row
+            h1= title
+                form.send_form_archive(action="/" method="post")
+                    div.input-field.col.s12
+                        img.responsive-img(src=data.icon width=150)
+                    div.input-field.col.s12
+                        input(type="text"  name="app" value=data.title)
+                    div.input-field.col.s12
+                        input(type="text"  name="reviews" value=data.reviews)
+                    div.input-field.col.s12
+                        input(type="text"  name="score" value=data.score)
+                    div.input-field.col.s12
+                        textarea.materialize-textarea(name="description") #{data.description}
+                    div.col.s12.m12
+                        input.waves-effect.waves-light.btn(type="submit" name="submit" )
