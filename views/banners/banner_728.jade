@@ -1,0 +1,14 @@
+extends ../layout_banner
+
+block content
+    div.block_468
+        div.icon
+            img(src=data.icon)
+        div.title
+            span #{data.title}
+            div.description #(data.description)
+        div.buttons
+            div.button
+                div.os #{translation.install}
+                div.os_img
+                    img(src='/images/#{data.os}_icon.png' width="33" height="33")

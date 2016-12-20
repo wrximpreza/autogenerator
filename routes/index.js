@@ -3,14 +3,14 @@ var router = express.Router();
 var gplay = require('google-play-scraper');
 var store = require('app-store-scraper');
 var Promise = require('promise');
-
+var path = require('path');
 var app = express();
 
 var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
 var fs      = require('fs');
 var webshot = require('webshot');
-
+var AdmZip = require('adm-zip');
 
 var country_list = [
     {"name": "Afghanistan", "code": "AF"},
@@ -306,16 +306,6 @@ var lang = {
     "de": "Deutsch"
 };
 
-var translation = {
-    'ru': {
-        'install': 'Install',
-        'ratings': 'Ratings'
-    },
-    'en': {
-        'install': 'Install',
-        'ratings': 'Ratings'
-    }
-};
 
 var phones = {
     'ios': 'App Store',
@@ -343,10 +333,12 @@ router.get('/', function (req, res, next) {
         data.lang = req.body.lang;
         data.country = req.body.country;
         data.format = req.body.format;
-        res.cookie('user_id', uuid.v4());
+
+        if(typeof req.cookies.user_id == 'undefined')
+            res.cookie('user_id', uuid.v4());
 
         if (data.app_id.split('.').length >= 2) {
-            data.os = phones.android;
+            data.os = 'android';
             gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.country})
                 .then(function (app) {
                     data.title = app.title;
@@ -364,7 +356,7 @@ router.get('/', function (req, res, next) {
 
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
-            data.os = phones.ios;
+            data.os = 'apple';
             store.app({id: data.app_id})
                 .then(function (app) {
                     data.title = app.title;
@@ -393,7 +385,7 @@ router.get('/', function (req, res, next) {
         ads.description = req.body.description;
         ads.reviews = req.body.reviews;
         ads.score = req.body.score;
-
+        ads.os = req.body.os;
 
         var pairs = [];
         for (var prop in ads) {
@@ -404,7 +396,7 @@ router.get('/', function (req, res, next) {
             }
         }
 
-        var url = "?" + pairs.join("&");
+        var url = "?" + pairs.join("%26");
 
         var options = {
             errorIfStatusIsNot200: true,
@@ -415,9 +407,32 @@ router.get('/', function (req, res, next) {
             }
         };
 
-        webshot('http://localhost:3000/banner'+url, '/public/tmp/banners/banner.png', options, function (err) {
-            if (err) return console.log(err);
-            console.log('OK');
+        var dir = path.join(__dirname, '../public')+'/tmp/'+req.cookies.user_id+'/';
+        var p = new Promise(function(resolve, reject) {
+
+            if (!fs.existsSync(dir)){
+                fs.mkdirSync(dir);
+            }
+            resolve("result");
+        });
+
+        p.then(function() {
+
+            webshot(req.protocol + '://' + req.get('host') + '/banner'+url, dir+'banner_'+ads.format+'.png', options, function (err) {
+                if (err) return console.log(err);
+                console.log('OK');
+            });
+        }).then(function () {
+            var zip = new AdmZip();
+            zip.addLocalFile(dir+'banner_'+ads.format+'.png');
+            zip.writeZip(dir+ads.format+'.zip');
+
+            var image_name = req.protocol + '://' + req.get('host') +'/tmp/'+req.cookies.user_id+'/banner_'+ads.format+'.png';
+            var zip_name = req.protocol + '://' + req.get('host') +'/tmp/'+req.cookies.user_id+'/'+ads.format+'.zip';
+
+            res.render('result', {title: 'Автогенерация креативов', image: image_name, zip: zip_name});
+        }).catch(function(error) {
+            console.log(error, '1');
         });
 
 });

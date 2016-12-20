@@ -1,0 +1,25 @@
+extends ../layout_banner
+
+block content
+    div.block_320_480
+        div.top
+            div.image
+                img(src=data.icon)
+            div.title #{data.title}
+            div.description World of Tanks is a massively multiplayer online game developed
+            div.votes
+                div.star
+                    img(src="./images/star_light.png")
+                    img(src="./images/star_light.png")
+                    img(src="./images/star_light.png")
+                    img(src="./images/star_light.png")
+                    img(src="./images/star_light.png")
+                div.raiting 22204 Ratings
+        div.bottom
+            div.button
+                div.txt Install
+                div.icon
+                    span on Google Play
+                    img(src='/images/#{data.os}_icon.png' width="20" height="20")
+
+
