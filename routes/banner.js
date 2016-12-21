@@ -16,6 +16,11 @@ var translation = {
     }
 };
 
+var phones = {
+    'apple': 'on App Store',
+    'android': 'on Google Play'
+};
+
 
 
 router.get('/', function (req, res, next) {
@@ -32,11 +37,17 @@ router.get('/', function (req, res, next) {
         template = 'banner_728';
     }else if(q.format == '300x250'){
         template = 'banner_300_250';
+    }else if(q.format == '300x250(2)'){
+        template = 'banner_300_250_1';
     }else if(q.format == '320x480'){
         template = 'banner_320_480';
+    }else if(q.format == '480x320'){
+        template = 'banner_480_320';
+    }else if(q.format == '480x320(2)'){
+        template = 'banner_480_320_2';
     }
 
-    res.render('banners/'+template, {data: q, translation: translation[q.lang]});
+    res.render('banners/'+template, {data: q, translation: translation[q.lang], phones: phones[q.os]});
 });
 
 function parseQuery(qstr) {

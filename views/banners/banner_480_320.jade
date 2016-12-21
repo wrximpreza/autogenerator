@@ -1,0 +1,25 @@
+extends ../layouts/layout_banner
+
+block content
+    div.block_480_320
+        div.top
+            div.left
+                img(src=data.icon)
+            div.right
+                div.title #{data.title}
+                div.votes
+                    div.star
+                        -for (var x = 0; x < data.score; x++)
+                            img(src="./images/star_light.png")
+                        -for (var z = data.score; z < 5; z++)
+                            img(src="./images/star_dark.png")
+                    div.raiting #{data.reviews} #{translation.ratings}
+                div.button
+                    div.txt #{translation.install}
+                    div.icon
+                        span #{phones}
+                        img(src='/images/#{data.os}_icon.png' width="20" height="20")
+        div.bottom
+            div.description #{data.description}
+
+

@@ -264,7 +264,7 @@ var formats = [
         "image": "http://materializecss.com/images/sample-1.jpg"
     },
     {
-        "name": "300x250(1)",
+        "name": "300x250",
         "image": "http://materializecss.com/images/sample-1.jpg"
     },
     {
@@ -284,7 +284,7 @@ var formats = [
         "image": "http://materializecss.com/images/sample-1.jpg"
     },
     {
-        "name": "480x320(1)",
+        "name": "480x320",
         "image": "http://materializecss.com/images/sample-1.jpg"
     },
     {
@@ -307,10 +307,6 @@ var lang = {
 };
 
 
-var phones = {
-    'ios': 'App Store',
-    'android': 'Google Play'
-};
 
 var data = {};
 
@@ -364,7 +360,7 @@ router.get('/', function (req, res, next) {
                     data.description = app.description;
                     data.reviews = app.reviews;
                     data.score = app.score;
-                    return promise(data);
+                    return data;
                 }).then(function (data) {
                 res.render('show', {title: 'Автогенерация креативов', data: data});
             })

@@ -223,35 +223,19 @@ body
  * end ads 728
  */
 
-gradient(f, to)
-  background: rgba(f);
-  background: -moz-radial-gradient(center, ellipse cover, rgba(f) 0%, rgba(to) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(f)), color-stop(100%, rgba(to)));
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(f) 0%, rgba(to) 100%);
-  background: -o-radial-gradient(center, ellipse cover, rgba(f) 0%, rgba(to) 100%);
-  background: -ms-radial-gradient(center, ellipse cover, rgba(f) 0%, rgba(to) 100%);
-  background: radial-gradient(ellipse at center, rgba(f) 0%, rgba(to) 100%);
 
 /*
 *  ads 300x250
 */
 .block_320_250
+  background: url("../images/bg_300_250.png") no-repeat;
   width: 300px;
   height: 250px;
-  background: #ffffff;
   font-family: Helvetica, Arial, sans-serif;
-  border-radius : 5px;
   display : block;
 
   .top
     height 196px;
-    background: rgba(209,213,215,1);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(209,213,215,1)), color-stop(100%, rgba(163,171,179,1)));
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -o-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -ms-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: radial-gradient(ellipse at center, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
 
     .left
         width : 145px;
@@ -293,12 +277,6 @@ gradient(f, to)
   .bottom
     height : 54px;
     background: rgba(203,205,208,1);
-    background: -moz-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(203,205,208,1)), color-stop(100%, rgba(233,233,233,1)));
-    background: -webkit-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -o-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -ms-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: linear-gradient(to right, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
     .button
       width : 222px;
       height : 34px;
@@ -334,6 +312,99 @@ gradient(f, to)
  */
 
 
+/*
+*  ads 300x250(2)
+*/
+.block_320_250_1
+  background: url("../images/bg_300_250.png") no-repeat;
+  width: 300px;
+  height: 250px;
+  font-family: Helvetica, Arial, sans-serif;
+  display : block;
+
+  .top
+    height 196px;
+
+    .left
+      width : 145px;
+      float : left;
+      display : block;
+      padding-top :9px;
+      padding-left : 9px;
+
+      img
+        width : 123px;
+        height : 123px;
+
+    .right
+      float : right
+      width : 145px;
+      display : block;
+      .description
+        color : #2d2d2d;
+        font-size : 12px;
+        line-height : 18px;
+        display : block;
+        height : 70px;
+        overflow : hidden;
+        margin-top : 14px;
+      .star
+        margin-top : 18px;
+      .raiting
+        color : #000;
+        font-size : 14px;
+        margin-top : 5px;
+
+    .title
+      padding-top : 17px;
+      margin-left : 12px;
+      margin-right :12px;
+      color : #2d2d2d;
+      font-size : 28px;
+      display: block;
+      clear: both;
+      text-align: center;
+      height : 40px;
+      overflow : hidden;
+
+
+  .bottom
+    height : 54px;
+    background: rgba(203,205,208,1);
+    .button
+      width : 222px;
+      height : 34px;
+      margin : 0 auto;
+      background : #ffffff;
+      color : #fff;
+      text-align : center;
+      border-radius : 40px;
+      position : relative;
+      top: 10px;
+      .txt
+        background : #27ae60;
+        font-size : 20px;
+        width : 82px;
+        float : left;
+        height: 34px;
+        line-height: 34px;
+        border-radius : 40px 0px 0px 40px;
+      .icon
+        background : #2aba67;
+        width : 140px;
+        float : right;
+        height: 34px;
+        font-size : 12px;
+        line-height: 34px;
+        border-radius : 0 40px 40px 0;
+        img
+          top: 5px;
+          left: 5px;
+          position: relative;
+/*
+ * end ads 300x250(2)
+ */
+
 
 /*
 *  ads 320x480
@@ -341,22 +412,14 @@ gradient(f, to)
 .block_320_480
   width: 320px;
   height: 480px;
-  background: #ffffff;
+  background: url("../images/bg_320_480.png") no-repeat;
   font-family: Helvetica, Arial, sans-serif;
-  border-radius : 5px;
   display : block;
 
   .top
     padding : 25px  50px;
     padding-bottom : 0px;
     height 375px;
-    background: rgba(209,213,215,1);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(209,213,215,1)), color-stop(100%, rgba(163,171,179,1)));
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -o-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: -ms-radial-gradient(center, ellipse cover, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
-    background: radial-gradient(ellipse at center, rgba(209,213,215,1) 0%, rgba(163,171,179,1) 100%);
 
     .image
       width : 100%;
@@ -402,13 +465,6 @@ gradient(f, to)
 
   .bottom
     height : 80px;
-    background: rgba(203,205,208,1);
-    background: -moz-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(203,205,208,1)), color-stop(100%, rgba(233,233,233,1)));
-    background: -webkit-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -o-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: -ms-linear-gradient(left, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
-    background: linear-gradient(to right, rgba(203,205,208,1) 0%, rgba(233,233,233,1) 100%);
     .button
       width : 222px;
       height : 34px;
@@ -418,7 +474,7 @@ gradient(f, to)
       text-align : center;
       border-radius : 40px;
       position : relative;
-      top: 23px;
+      top: 26px;
       .txt
         background : #27ae60;
         font-size : 20px;
@@ -441,4 +497,197 @@ gradient(f, to)
           position: relative;
 /*
  * end ads 320x480
+ */
+
+
+
+
+
+/*
+*  ads 480x320
+*/
+.block_480_320
+  width: 480px;
+  height: 320px;
+  background: url("../images/bg_480_320.png") no-repeat;
+  font-family: Helvetica, Arial, sans-serif;
+  display : block;
+
+  .top
+    height 224px;
+
+    .left
+      width : 186px;
+      float : left;
+      display : block;
+      padding-top :27px;
+      padding-left : 30px;
+
+      img
+        width : 166px;
+        height : 166px;
+        background : #fff;
+
+    .right
+      float : left;
+      width : 225px;
+      display : block;
+      .title
+        color : #2d2d2d;
+        font-size : 28px;
+        margin-top : 30px;
+        height : 64px;
+        overflow : hidden;
+      .votes
+        width :100%;
+        height : 16px;
+        line-height : 16px;
+        margin-top : 20px;
+        .star
+          width : 50%;
+          float : left;
+          padding-top: 3px;
+        .raiting
+          color : #000;
+          font-size : 14px;
+          width : 50%;
+          float : right;
+          text-align : right;
+      .button
+        width : 100%;
+        height : 34px;
+        margin : 0 auto;
+        background : #ffffff;
+        color : #fff;
+        text-align : center;
+        border-radius : 40px;
+        margin-top : 30px;
+        .txt
+          background : #27ae60;
+          font-size : 20px;
+          width : 85px;
+          float : left;
+          height: 34px;
+          line-height: 34px;
+          border-radius : 40px 0px 0px 40px;
+        .icon
+          background : #2aba67;
+          width : 140px;
+          float : right;
+          height: 34px;
+          font-size : 12px;
+          line-height: 34px;
+          border-radius : 0 40px 40px 0;
+          img
+            top: 5px;
+            left: 5px;
+            position: relative;
+
+  .bottom
+    height : 96px;
+    .description
+      padding-top : 22px;
+      margin-left : 30px;
+      margin-right :30px;
+      color : #2d2d2d;
+      font-size : 12px;
+      line-height : 18px;
+      display : block;
+      clear: both;
+      height: 55px;
+      overflow : hidden;
+
+/*
+ * end ads 480x320
+ */
+
+
+
+/*
+*  ads 480x320(2)
+*/
+.block_480_320_2
+  width: 480px;
+  height: 320px;
+  background: url("../images/bg_480_320_2.png") no-repeat;
+  font-family: Helvetica, Arial, sans-serif;
+  display : block;
+
+  .left
+      width : 205px;
+      float : left;
+      display : block;
+      padding-top :27px;
+      padding-left : 13px;
+
+      .image img
+        width : 166px;
+        height : 166px;
+        background : #fff;
+
+      .votes
+        width :166px;
+        height : 16px;
+        line-height : 20px;
+        margin-top : 15px;
+        .star
+          width : 40%;
+          float : left;
+          padding-top: 3px;
+        .raiting
+          color : #000;
+          font-size : 12px;
+          width : 60%;
+          float : right;
+          text-align : right;
+      .button
+        width : 166px;
+        height : 34px;
+        background : #ffffff;
+        color : #fff;
+        text-align : center;
+        border-radius : 40px;
+        margin-top : 32px;
+        .txt
+          background : #27ae60;
+          font-size : 20px;
+          width : 111px;
+          float : right;
+          height: 34px;
+          line-height: 34px;
+          border-radius : 0px 40px 40px 0px;
+        .icon
+          background : #2aba67;
+          width : 55px;
+          float : left;
+          height: 34px;
+          font-size : 12px;
+          line-height: 34px;
+          border-radius : 40px 0px 0px 40px;
+          img
+            top: 5px;
+            left: 5px;
+            position: relative;
+
+    .right
+      float : left;
+      width : 225px;
+      display : block;
+      .title
+        color : #2d2d2d;
+        font-size : 28px;
+        margin-top : 25px;
+        height : 64px;
+        overflow : hidden;
+      .description
+        padding-top : 27px;
+        color : #2d2d2d;
+        font-size : 12px;
+        line-height : 18px;
+        display : block;
+        clear: both;
+        height: 175px;
+        overflow : hidden;
+/*
+ * end ads 480x320(2)
  */

@@ -1,19 +1,19 @@
 extends ../layouts/layout_banner
 
 block content
-    div.block_320_480
+    div.block_320_250_1
         div.top
-            div.image
+            div.left
                 img(src=data.icon)
-            div.title #{data.title}
-            div.description #{data.description}
-            div.votes
+            div.right
+                div.description #{data.description}
                 div.star
                     -for (var x = 0; x < data.score; x++)
                         img(src="./images/star_light.png")
                     -for (var z = data.score; z < 5; z++)
                         img(src="./images/star_dark.png")
                 div.raiting #{data.reviews} #{translation.ratings}
+            div.title #{data.title}
         div.bottom
             div.button
                 div.txt #{translation.install}
