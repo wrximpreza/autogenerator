@@ -5,12 +5,17 @@ var store = require('app-store-scraper');
 var Promise = require('promise');
 var path = require('path');
 var app = express();
+var rmdir = require('rmdir');
+
 
 var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
 var fs = require('fs');
 var webshot = require('webshot');
 var AdmZip = require('adm-zip');
+
+var nodemailer = require('nodemailer');
+
 
 var country_list = [
     {"name": "Afghanistan", "code": "AF"},
@@ -273,6 +278,7 @@ var lang = {
 
 
 var data = {};
+data.images = [];
 
 var promise = function (app) {
     data = app;
@@ -280,80 +286,55 @@ var promise = function (app) {
 
 app.use(cookieParser());
 
-function createImage(ads) {
+function httpGet(format) {
 
-    var promise = Promise.resolve(null);
-
-    var images = [];
-    var dir = path.join(__dirname, '../public') + '/tmp/' + ads.user_id + '/';
-    ads.formats.forEach(function (item) {
-        promise = promise.then(function() {
-            var pairs = [];
-            pairs.push(['test=test']);
-            pairs.push(['format=' + item]);
-            for (var prop in ads) {
-                if (ads.hasOwnProperty(prop)) {
-                    var k = encodeURIComponent(prop),
-                        v = encodeURIComponent(ads[prop]);
-                    pairs.push(k + "=" + v);
-                }
+    return new Promise(function (resolve) {
+        var pairs = [];
+        pairs.push(['test=test']);
+        pairs.push(['format=' + format]);
+        for (var prop in data) {
+            if (data.hasOwnProperty(prop)) {
+                var k = encodeURIComponent(prop),
+                    v = encodeURIComponent(data[prop]);
+                pairs.push(k + "=" + v);
             }
-            var url = "?" + pairs.join("%26");
-            var size = item.split('_');
-            var options = {
-                errorIfStatusIsNot200: true,
-                errorIfJSException: true,
-                screenSize: {
-                    width: size[0],
-                    height: size[1]
-                },
-                onLoadFinished: function() {
-                    console.log('2');
-                }
-            };
-            webshot(ads.host + '/banner' + url, dir + 'banner_' + item + '.png', options, function (err) {
-                if (err) return console.log(err);
-                console.log('OK');
-            });
-
-        }).then(function() {
-            images.push(dir + 'banner_' + item + '.png');
+        }
+        var url = "?" + pairs.join("%26");
+        var size = format.split('_');
+        var options = {
+            errorIfStatusIsNot200: true,
+            errorIfJSException: true,
+            screenSize: {
+                width: size[0],
+                height: size[1]
+            },
+            onLoadFinished: function () {
+                console.log('2');
+            }
+        };
+        webshot(data.host + '/banner' + url, data.dir + 'banner_' + format + '.png', options, function (err) {
+            if (err)
+                return console.log(err);
+            data.images.push(data.dir + 'banner_' + format + '.png');
+            resolve(data.dir + 'banner_' + format + '.png');
         });
+
     });
 
-        return promise.then(function() {
-            return images;
-        });
-}
-
-function generateAds(ads) {
-    var dir = path.join(__dirname, '../public') + '/tmp/' + ads.user_id + '/';
-
-        var p = new Promise(function (resolve, reject) {
-            if (!fs.existsSync(dir)) {
-                fs.mkdirSync(dir);
-            }
-            resolve("result");
-        }).then(function () {
-            return createImage(ads);
-        }).then(function (items) {
-            console.log(items);
-
-             var zip = new AdmZip();
-            items.forEach(function (item) {
-                zip.addLocalFile(item);
-            });
-            zip.writeZip(dir+'formats.zip');
-
-        }).catch(function (error) {
-
-        });
 }
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
+    if(typeof data.user_id != 'undefined'){
+        rmdir(path.join(__dirname, '../public') + '/tmp/' + data.user_id, function (err, dirs, files) {
+            console.log(dirs);
+            console.log(files);
+            console.log('all files are removed');
+        });
+    }
+    data = {};
+    data.images = [];
     var countries = country_list.map(function (value) {
         return {"name": value.name, "code": value.code.toLowerCase()};
     });
@@ -371,6 +352,8 @@ router.get('/', function (req, res, next) {
         }
         data.email = req.body.email;
         data.local = req.body.local;
+        data.download = req.body.download;
+
         if (typeof req.body.local == 'undefined') {
             data.local = 0;
         }
@@ -388,6 +371,12 @@ router.get('/', function (req, res, next) {
         if (typeof req.cookies.user_id == 'undefined')
             res.cookie('user_id', uuid.v4());
         data.user_id = req.cookies.user_id;
+        data.dir = path.join(__dirname, '../public') + '/tmp/' + data.user_id + '/';
+        if(typeof data.formats == 'string') {
+            var tmp = data.formats;
+            data.formats = [];
+            data.formats.push(tmp);
+        }
         var dir = path.join(__dirname, '../public') + '/tmp/' + data.user_id + '/';
         if (data.app_id.split('.').length >= 2) {
             data.os = 'android';
@@ -398,18 +387,31 @@ router.get('/', function (req, res, next) {
                     data.description = app.summary;
                     data.reviews = app.reviews;
                     data.score = app.score;
-                    return data;
-                }).then(function (app) {
-                generateAds(app);
-            }).then(function () {
+                    if (!fs.existsSync(data.dir)) {
+                        fs.mkdirSync(data.dir);
+                    }
 
-                /*res.set('Content-Type', 'application/zip');
-                res.set('Content-Disposition', 'attachment; filename='+data.host+'/tmp/'+data.user_id+'/formats.zip');
-                return;*/
-            })
-                .catch(function (e) {
-                console.log('There was an error fetching the application!', e.message);
-            });
+                    var promise =  Promise.all(data.formats.map(httpGet));
+                    return promise.then(function() {
+                        return data.images;
+                    }).then(function (result) {
+                        if(data.download == 1) {
+                            var zip = new AdmZip();
+                            data.images.forEach(function (item) {
+                                zip.addLocalFile(item);
+                            });
+                            zip.writeZip(dir + 'formats.zip');
+                            data.zip = data.host + '/tmp/'+data.user_id+'/formats.zip';
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }).then(function (input) {
+                    res.render('index', {lang: lang, formats: formats, status: '1', data: data});
+                }).catch(function (e) {
+                    console.log('There was an error fetching the application!', e.message);
+                    res.render('error', {message:e.message});
+                });
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
             data.os = 'apple';
@@ -420,11 +422,29 @@ router.get('/', function (req, res, next) {
                     data.description = app.description;
                     data.reviews = app.reviews;
                     data.score = app.score;
-                    return data;
-                }).then(function (app) {
-                generateAds(app);
+                    if (!fs.existsSync(data.dir)) {
+                        fs.mkdirSync(data.dir);
+                    }
+                    var promise =  Promise.all(data.formats.map(httpGet));
+                    return promise.then(function() {
+                        return data.images;
+                    }).then(function (result) {
+                        if(data.download == 1) {
+                            var zip = new AdmZip();
+                            data.images.forEach(function (item) {
+                                zip.addLocalFile(item);
+                            });
+                            zip.writeZip(dir + 'formats.zip');
+                            data.zip = data.host + '/tmp/'+data.user_id+'/formats.zip';
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }).then(function (input) {
+                res.render('index', {lang: lang, formats: formats, status: '1', data: data});
             }).catch(function (e) {
                 console.log('There was an error fetching the application!', e.message);
+                res.render('error', {message:e.message});
             });
         }
 

@@ -48,7 +48,23 @@ router.get('/', function (req, res, next) {
         template = 'banner_480_320_2';
     }
 
-    res.render('banners/'+template, {data: q, translation: translation[q.lang], phones: phones[q.os]});
+    if(typeof translation[q.lang] == 'undefined'){
+        var translate = translation['en'];
+    }else{
+        var translate = translation[q.lang];
+    }
+
+    if (q.title_text) {
+        translate.title = q.title_text;
+    }
+    if (q.button_text) {
+        translate.install = q.button_text;
+    }
+    if (q.rate_text) {
+        translate.ratings = q.rate_text;
+    }
+
+    res.render('banners/'+template, {data: q, translation: translate, phones: phones[q.os]});
 });
 
 function parseQuery(qstr) {

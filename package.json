@@ -19,6 +19,7 @@
     "google-play-scraper":"3.1.8",
     "node-uuid":"1.4.7",
     "webshot": "0.18.0",
-    "adm-zip": "0.4.7"
+    "adm-zip": "0.4.7",
+    "rmdir": "1.2.0"
   }
 }

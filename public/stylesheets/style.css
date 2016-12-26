@@ -260,3 +260,8 @@ footer {
   height: 10px;
   background: #3078bf;
 }
+#modal1 {
+  width: 35%;
+  text-align: center;
+  height: 25%;
+}
