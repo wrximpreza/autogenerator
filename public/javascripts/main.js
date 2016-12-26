@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $('.input-field select, .icons').material_select();
     $('.tooltip').tooltipster({
         theme: 'tooltipster-shadow',
@@ -84,8 +85,9 @@ function sendData() {
         showModal('Выберите вариант получения баннеров');
         return false;
     }
-
+    $('#preloader').show();
     $('form.send_form').submit();
+
 }
 function showModal(text) {
     Materialize.toast(text, 2000);

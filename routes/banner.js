@@ -63,7 +63,7 @@ router.get('/', function (req, res, next) {
     if (q.rate_text) {
         translate.ratings = q.rate_text;
     }
-
+    q.score = Math.round(q.score);
     res.render('banners/'+template, {data: q, translation: translate, phones: phones[q.os]});
 });
 

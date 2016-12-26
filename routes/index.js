@@ -323,7 +323,7 @@ function httpGet(format) {
 
 }
 function sendEmail() {
-    // Create a SMTP transporter object
+
     var transporter = nodemailer.createTransport({
         host: 'smtp.mail.ru',
         port: 465,
@@ -331,76 +331,33 @@ function sendEmail() {
             user: 'wrximpreza@mail.ru',
             pass: 'wrx1987'
         },
-        /*tls: {
+        tls: {
             rejectUnauthorized: false
-        },*/
+        },
         secure: true,
-        logger: true, // log to console
-        debug: true // include SMTP traffic in the logs
+        //logger: true, // log to console
+        //debug: true // include SMTP traffic in the logs
     }, {
-        // default message fields
-
-        // sender info
-        from: 'Sender Name <sender@example.com>',
+        from: 'Генератор Баннеров <wrximpreza@mail.ru>',
         headers: {
-            'X-Laziness-level': 1000 // just an example header, no need to use this
+            'X-Laziness-level': 1000
         }
     });
 
-    console.log('SMTP Configured');
-
-// Message object
     var message = {
-
-        // Comma separated list of recipients
-        to: 'wrximpreza1987@gmail.com',
-
-        // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔', //
-
-        // plaintext body
-        text: 'Hello to myself!',
-
-        // HTML body
-        html: '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-        '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
-        // Apple Watch specific HTML body
-        watchHtml: '<b>Hello</b> to myself',
-
-        // An array of attachments
-        /*attachments: [
-
-            // String attachment
+        to: data.email,
+        subject: 'Генератор Баннеров ✔', //
+        html: '',
+        attachments: [
             {
-                filename: 'notes.txt',
-                content: 'Some notes about this e-mail',
-                contentType: 'text/plain' // optional, would be detected from the filename
-            },
-
-            // Binary Buffer attachment
-            {
-                filename: 'image.png',
-                content: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                    '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                    'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
-
-                cid: 'note@example.com' // should be as unique as possible
-            },
-
-            // File Stream attachment
-            {
-                filename: 'nyan cat ✔.gif',
-                path: __dirname + '/assets/nyan.gif',
-                cid: 'nyan@example.com' // should be as unique as possible
+                filename: 'formats.zip',
+                path: data.zip
             }
-        ]*/
+        ]
     };
 
-    console.log('Sending Mail');
     transporter.sendMail(message, function (error, info) {
         if (error) {
-            console.log('Error occurred');
             console.log(error.message);
             return;
         }
@@ -494,8 +451,8 @@ router.get('/', function (req, res, next) {
                         console.log(error);
                     });
                 }).then(function (input) {
-
-                    sendEmail();
+                    if(data.send_mail == 1)
+                        sendEmail();
                     res.render('index', {lang: lang, formats: formats, status: '1', data: data});
                 }).catch(function (e) {
                     console.log('There was an error fetching the application!', e.message);
@@ -530,6 +487,8 @@ router.get('/', function (req, res, next) {
                         console.log(error);
                     });
                 }).then(function (input) {
+                if(data.send_mail == 1)
+                    sendEmail();
                 res.render('index', {lang: lang, formats: formats, status: '1', data: data});
             }).catch(function (e) {
                 console.log('There was an error fetching the application!', e.message);

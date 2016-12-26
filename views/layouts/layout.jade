@@ -9,190 +9,26 @@ html
     link(href='https://cdn.jsdelivr.net/g/jquery.tooltipster@4.1.6(css/tooltipster.bundle.min.css+css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css)' rel='stylesheet')
     link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
   body
-    div.container
-      header
-        div.row
-          div.logo.co1.s12
-            div.col.s2
-              a(href="/")
-                img(src="/images/logo.png" width=150)
-            div.col.s10
-              span Генератор Баннеров
-  form.send_form(action="/" method="post")
-      div.block_input
-         div.container
-           div.row
-             div.col.s8.offset-s2
-               div.text Введите <b>bundle_id</b> приложения, которое вы ищете
-               div.input
-                  input(type="text" placeholder="Enter bundle_id"  name="app")
-
-      div.localization
-        div.container
-          div.row
-            div.col.s8.offset-s2
-              div.text Выберите локализацию баннеров
-              div.row
-                div.col.s6.input-field
-                    select(name="lang" id="lang")
-                      each v, k in lang
-                        option(value=k) #{v}
-                div.col.s6.no_local
-                  div.tooltip_content
-                    div#tooltip_content Если нет локализации, вы<br /> можеет создать баннеры со<br /> своим текстом выдели пункт<br /> 'Нет локализации'
-                  input#filled-in-box.filled-in(type="checkbox" name="local" value="1")
-                  label(for="filled-in-box") Нет локализации
-                  img.tooltip(src="/images/info.png")
-
-      div.banners
-          div.row
-            div.col.s12
-              div.title.has Выберите размер генерируемых баннеров
-              div.title.no(style="display:none;") Введите текст и выберите размер генерируемых баннеров
-              div.input_texts.col.s6.offset-s3.no(style="display:none;")
-                div.input_text
-                  div.col.s3 Название приложения
-                  div.input-field.inline.col.s9
-                    input(type="text" name="title_text" value="")
-                div.input_text
-                  div.input_text
-                    div.col.s3 Название кнопки
-                  div.input-field.inline.col.s9
-                      input(type="text" name="button_text" value="")
-                div.input_text
-                  div.input_text
-                    div.col.s3 Рейтинг
-                    div.input-field.inline.col.s9
-                      input(type="text" name="rate_text" value="")
-              div.check_all
-                input#check_all.filled-in(type="checkbox" name="check_all")
-                label(for="check_all") Выбрать все
-              div.row.boxes
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_300_50.filled-in(type="checkbox" name="format[]" value="300_50")
-                      label(for="format_300_50")
-                    div.format_image
-                      img(src="/images/formats/banner_300_50.png")
-                    div.format_name 300x50
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_320_50.filled-in(type="checkbox" name="format[]" value="320_50")
-                      label(for="format_320_50")
-                    div.format_image
-                      img(src="/images/formats/banner_300_50.png")
-                    div.format_name 320x50
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_728_90.filled-in(type="checkbox" name="format[]" value="728_90")
-                      label(for="format_728_90")
-                    div.format_image
-                      img(src="/images/formats/banner_728_90.png")
-                    div.format_name 728x90
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_468_60.filled-in(type="checkbox" name="format[]" value="468_60")
-                      label(for="format_468_60")
-                    div.format_image
-                      img(src="/images/formats/banner_728_90.png")
-                    div.format_name 468x60
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_300_250.filled-in(type="checkbox" name="format[]" value="300_250")
-                      label(for="format_300_250")
-                    div.format_image.top
-                      img(src="/images/formats/banner_300_250.png")
-                    div.format_name 300x250 V1
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_300_250_2.filled-in(type="checkbox" name="format[]" value="300_250_2")
-                      label(for="format_300_250_2")
-                    div.format_image.top
-                      img(src="/images/formats/banner_300_250_2.png")
-                    div.format_name 300x250 V2
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_480_320.filled-in(type="checkbox" name="format[]" value="480_320")
-                      label(for="format_480_320")
-                    div.format_image.top
-                      img(src="/images/formats/banner_480_320.png")
-                    div.format_name 480x320 V1
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_480_320_2.filled-in(type="checkbox" name="format[]" value="480_320_2")
-                      label(for="format_480_320_2")
-                    div.format_image.top
-                      img(src="/images/formats/banner_480_320_2.png")
-                    div.format_name 480x320 V2
-                    div.description
-                      div Описание текста
-                div.col.s3
-                  div.box
-                    div.check
-                      input#format_320_480.filled-in(type="checkbox" name="format[]" value="320_480")
-                      label(for="format_320_480")
-                    div.format_image.top
-                      img(src="/images/formats/banner_320_480.png")
-                    div.format_name 320x480
-                    div.description
-                      div Описание текста
-      div.foot_button
-        div.container
-          div.row
-            div.col.s8.offset-s2
-              div.result
-                div.col.s4.archive
-                  input#download.filled-in(type="checkbox" name="download" value="1")
-                  label(for="download") Скачать архив
-                div.col.s4.archive
-                  input#send_mail.filled-in(type="checkbox" name="send_mail" value="1")
-                  label(for="send_mail") Получить архив на почту
-                div.col.s4.email
-                  input(type="email" placeholder="email@mail.com" name="email")
-              div.button
-                a.waves-effect.waves-light.btn(onclick="sendData()") Сгенерировать баннер
+    block content
 
     footer.footer
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js")
+    script(src="https://cdn.jsdelivr.net/jquery.tooltipster/4.1.6/js/tooltipster.bundle.min.js")
+    script(src="//cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.js")
+    script(src="/javascripts/main.js")
+    if status == "1"
+      div#mylightbox.lightbox
+        div Сообщение отправлено
+        if data.download == 1
+           div
+             a.download(href="#{data.zip}") Скачать архив
+      a#lightbox_click(data-featherlight="#mylightbox")
 
-script(src="https://code.jquery.com/jquery-2.1.4.min.js")
-script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js")
-script(src="https://cdn.jsdelivr.net/jquery.tooltipster/4.1.6/js/tooltipster.bundle.min.js")
-script(src="//cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.js")
-script(src="/javascripts/main.js")
-if status == "1"
-  div#mylightbox.lightbox
-    div Сообщение отправлено
-    if data.download == 1
-      div
-        a.download(href="#{data.zip}") Скачать архив
-  a#lightbox_click(data-featherlight="#mylightbox")
-
-a(data-target="modal1")
-div#modal1.modal.modal-fixed-footer
-  div
-    i.fa.fa-times
-  div.modal-content
-    h4 Сообщение
-    p
+    a(data-target="modal1")
+      div#modal1.modal.modal-fixed-footer
+        div
+          i.fa.fa-times
+        div.modal-content
+          h4 Сообщение
+          p

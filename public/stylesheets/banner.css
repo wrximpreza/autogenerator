@@ -28,7 +28,8 @@ body {
 .block_1 .title {
   width: 112px;
   float: left;
-  height: 50px;
+  height: 33px;
+  overflow: hidden;
   color: #2d2d2d;
   font-size: 14px;
   padding-top: 9px;
@@ -105,12 +106,16 @@ body {
   font-weight: bold;
   height: 17px;
   overflow: hidden;
+  height: 17px;
+  overflow: hidden;
+  display: block;
 }
 .block_468 .title .description {
   font-size: 10px;
   padding-top: 6px;
   height: 23px;
   overflow: hidden;
+  padding-right: 10px;
 }
 .block_468 .buttons {
   float: right;
@@ -179,10 +184,15 @@ body {
 .block_728 .title span {
   font-size: 22px;
   font-weight: bold;
+  height: 25px;
+  overflow: hidden;
+  display: block;
 }
 .block_728 .title .description {
   font-size: 12px;
   padding-top: 4px;
+  height: 30px;
+  overflow: hidden;
 }
 .block_728 .buttons {
   float: right;
@@ -253,6 +263,8 @@ body {
   color: #2d2d2d;
   font-size: 28px;
   margin-top: 14px;
+  overflow: hidden;
+  height: 32px;
 }
 .block_320_250 .top .right .star {
   margin-top: 25px;
@@ -271,6 +283,8 @@ body {
   line-height: 18px;
   display: block;
   clear: both;
+  height: 39px;
+  overflow: hidden;
 }
 .block_320_250 .bottom {
   height: 54px;
@@ -441,6 +455,8 @@ body {
   color: #2d2d2d;
   font-size: 26px;
   text-align: center;
+  height: 31px;
+  overflow: hidden;
 }
 .block_320_480 .top .votes {
   width: 100%;
@@ -466,7 +482,7 @@ body {
   font-size: 12px;
   display: block;
   clear: both;
-  height: 45px;
+  height: 40px;
   overflow: hidden;
   line-height: 18px;
 }
@@ -707,7 +723,7 @@ body {
   line-height: 18px;
   display: block;
   clear: both;
-  height: 175px;
+  height: 182px;
   overflow: hidden;
 }
 /*
