@@ -49,11 +49,11 @@ $(document).ready(function() {
 
 function sendData() {
     if(!$('.block_input input[name=app]').val()){
-        showModal('Введите bundle_id приложения, которое вы ищете');
+        showModal('Введите bundle_id приложения,<br/> которое вы ищете');
         return false;
     }
     if($(".boxes  .box .filled-in:checked").length == 0){
-        showModal('Выберите баннеры которые Вы хотите сгенерировать');
+        showModal('Выберите баннеры которые<br/> Вы хотите сгенерировать');
         return false;
     }
     if($("#filled-in-box").prop('checked')){
@@ -73,7 +73,10 @@ function sendData() {
 
     if($("#send_mail").prop('checked')){
         if($(".result .email input").val()==''){
-            showModal('Введите почту на которую отправлять сгенерированные баннеры');
+            showModal('Введите почту на которую <br/>отправлять сгенерированные баннеры');
+            return false;
+        }else if( !validateEmail($(".result .email input").val())) {
+            showModal('Введите правильную почту');
             return false;
         }
     }
@@ -85,7 +88,11 @@ function sendData() {
     $('form.send_form').submit();
 }
 function showModal(text) {
-
-    $('.modal-content p').html(text);
-    $('#modal1').modal('open');
+    Materialize.toast(text, 2000);
+    /*$('.modal-content p').html(text);
+    $('#modal1').modal('open');*/
+}
+function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test( $email );
 }
