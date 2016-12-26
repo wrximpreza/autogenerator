@@ -3,12 +3,221 @@ body
 a
   color: #00B7FF
 
-.browser-default
-  font-size 14px;
+header
+  padding-top : 22px;
 
-.btn
-  font-size 14px;
-  float right;
-  margin-top 15px;
+.logo span
+  font-size : 30px;
+  color : #000;
+  margin-top: 24px;
+  display: block;
+  position: relative;
+  left: -28px;
 
+.block_input
+  height : 156px;
+  background : url("../images/bg_input.png");
 
+  .text
+    color : #ffffff;
+    font-size : 20px;
+    text-align : center;
+    margin-bottom : 15px;
+    margin-top: 32px;
+
+  .input input
+    height : 40px;
+    padding-left : 10px;
+    background : #ffffff;
+    text-align : center;
+
+  .input input:focus
+    border-bottom: 0px solid #26a69a;
+    box-shadow: 0 0px 0 0 #26a69a;
+.tooltip_content
+  display : none;
+.localization
+  height : 190px;
+  .text
+    font-size : 25px;
+    text-align : center;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    color : #000000;
+  .select-wrapper
+    width : 141px;
+    text-align: center;
+    float: right;
+  .input-field
+    margin-top : 0px;
+    padding-right: 30px;
+  .input-field .select-wrapper input.select-dropdown
+    height : 48px;
+    width : 141px;
+    border : 1px solid #e8e8e8;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+  .dropdown-content li>a, .dropdown-content li>span
+    font-size: 16px;
+    color: #000;
+    display: block;
+    line-height: 22px;
+    padding: 0px;
+    text-align: center;
+  .dropdown-content li>span
+    line-height: 50px;
+  .select-wrapper span.caret
+    right: 8px;
+    top: -20px;
+    color: #3078bf;
+  .no_local
+    margin-top : 13px;
+  .tooltipstered
+    position : relative;
+    left: 12px;
+    top : 3px;
+
+[type="checkbox"].filled-in:not(:checked)+label:after
+  border: 2px solid #e8e8e8;
+
+[type="checkbox"].filled-in:checked+label:after
+  border: 2px solid #3078bf;
+  background-color: #3078bf;
+[type="checkbox"]+label
+  padding-left: 30px;
+  line-height: 22px;
+
+.banners
+  background : #fafafa;
+  padding : 30px 0px;
+  .title
+    text-align : center;
+    color: #000;
+    font-size : 25px;
+    margin-bottom : 20px;
+  .title:before
+    content : '';
+    display : block;
+    height :5px;
+    width : 35px;
+    background : #3078bf;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  .input_texts
+    margin-bottom : 35px;
+    margin-top : 35px;
+    .input_text
+      margin: 0 auto;
+      text-align: center;
+      .s3
+        font-size : 16px;
+        color : #000000;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+      .input-field.inline
+        margin : 0px;
+        padding: 0px;
+        text-align: left;
+        input
+          height: 40px;
+          padding-left: 10px;
+          background: #fff;
+          text-align: center;
+          border: 1px solid #e8e8e8;
+          font-size: 16px;
+          color: #000;
+          width : 450px;
+        input:focus
+          border-bottom: 1px solid #e8e8e8;
+          box-shadow: 0 0px 0 0 #26a69a;
+  .check_all
+    margin-bottom : 15px;
+    padding: 0 0.75rem;
+    clear : both;
+  .box
+    height : 210px;
+    border :0px solid #e8e8e8;
+    border-radius : 5px;
+    padding : 10px;
+    display : block;
+    box-shadow: 0px 0px 10px 2px rgba(242, 242, 242, 0.75);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(242, 242, 242, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(242, 242, 242, 0.75);
+    position : relative;
+    .description
+      height: 160px;
+      background: rgba(48, 120, 191, 0.6);
+      position: absolute;
+      z-index: 999;
+      width: 100%;
+      left: 0;
+      top: 50px;
+      display : none;
+      div
+        font-size : 14px;
+        color : gray;
+        background : #fff;
+        margin : 30px;
+        height : 100px;
+        padding: 10px;
+    .description.active
+        display : block;
+
+    .check
+      float : right;
+      display : block;
+    .format_image
+      height : 135px;
+      display : block;
+      text-align : center;
+      clear: both;
+      line-height : 135px;
+      img
+        vertical-align: middle;
+    .format_image.top
+      position : relative;
+      top : -10px;
+    .format_name
+      text-align : center;
+      color : #000000;
+      font-size : 20px;
+      font-weight: bold;
+
+.foot_button
+  height : 200px;
+  background : #ffffff;
+  margin-top : 50px;
+  .email input
+    height: 40px;
+    padding-left: 10px;
+    background: #fff;
+    text-align: center;
+    border: 1px solid #e8e8e8;
+    font-size: 16px;
+    color: #000;
+  .email input:focus
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 0px 0 0 #26a69a;
+  .result
+    height: 42px;
+    .archive
+      height : 42px;
+      line-height : 42px;
+  .button
+    margin : 0 auto;
+    text-align : center;
+    margin-top : 50px;
+    .btn
+      background: #3078bf;
+      color: #fff;
+      font-size: 16px;
+      border-radius : 2px;
+
+.lightbox
+  display : none;
+footer
+  height : 10px;
+  background : #3078bf;

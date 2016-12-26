@@ -8,7 +8,7 @@ var app = express();
 
 var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
-var fs      = require('fs');
+var fs = require('fs');
 var webshot = require('webshot');
 var AdmZip = require('adm-zip');
 
@@ -259,42 +259,7 @@ var country_list = [
     {"name": "Zimbabwe", "code": "ZW"}
 ];
 var formats = [
-    {
-        "name": "300x50",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "300x250",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "300x250(2)",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "320x50",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "320x480",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "468x60",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "480x320",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "480x320(2)",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    },
-    {
-        "name": "728x90",
-        "image": "http://materializecss.com/images/sample-1.jpg"
-    }
+    "300_50", "320_50", "728_90", "468_60", "300_250", "300_250_2", "480_320", "480_320_2", "320_480"
 ];
 
 var lang = {
@@ -307,7 +272,6 @@ var lang = {
 };
 
 
-
 var data = {};
 
 var promise = function (app) {
@@ -316,23 +280,115 @@ var promise = function (app) {
 
 app.use(cookieParser());
 
+function createImage(ads) {
+
+    var promise = Promise.resolve(null);
+
+    var images = [];
+    var dir = path.join(__dirname, '../public') + '/tmp/' + ads.user_id + '/';
+    ads.formats.forEach(function (item) {
+        promise = promise.then(function() {
+            var pairs = [];
+            pairs.push(['test=test']);
+            pairs.push(['format=' + item]);
+            for (var prop in ads) {
+                if (ads.hasOwnProperty(prop)) {
+                    var k = encodeURIComponent(prop),
+                        v = encodeURIComponent(ads[prop]);
+                    pairs.push(k + "=" + v);
+                }
+            }
+            var url = "?" + pairs.join("%26");
+            var size = item.split('_');
+            var options = {
+                errorIfStatusIsNot200: true,
+                errorIfJSException: true,
+                screenSize: {
+                    width: size[0],
+                    height: size[1]
+                },
+                onLoadFinished: function() {
+                    console.log('2');
+                }
+            };
+            webshot(ads.host + '/banner' + url, dir + 'banner_' + item + '.png', options, function (err) {
+                if (err) return console.log(err);
+                console.log('OK');
+            });
+
+        }).then(function() {
+            images.push(dir + 'banner_' + item + '.png');
+        });
+    });
+
+        return promise.then(function() {
+            return images;
+        });
+}
+
+function generateAds(ads) {
+    var dir = path.join(__dirname, '../public') + '/tmp/' + ads.user_id + '/';
+
+        var p = new Promise(function (resolve, reject) {
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+            resolve("result");
+        }).then(function () {
+            return createImage(ads);
+        }).then(function (items) {
+            console.log(items);
+
+             var zip = new AdmZip();
+            items.forEach(function (item) {
+                zip.addLocalFile(item);
+            });
+            zip.writeZip(dir+'formats.zip');
+
+        }).catch(function (error) {
+
+        });
+}
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
+
     var countries = country_list.map(function (value) {
-        return {"name": value.name, "code":value.code.toLowerCase()};
+        return {"name": value.name, "code": value.code.toLowerCase()};
     });
-    res.render('index', {title: 'Автогенерация креативов', countries: countries, lang: lang, formats: formats});
+    res.render('index', {countries: countries, lang: lang, formats: formats});
 })
     .post('/', function (req, res, next) {
 
+        data.host = req.protocol + '://' + req.get('host');
         data.app_id = req.body.app;
         data.lang = req.body.lang;
-        data.country = req.body.country;
-        data.format = req.body.format;
+        data.formats = req.body['format[]'];
+        data.send_mail = req.body.send_mail;
+        if (typeof req.body.send_mail == 'undefined') {
+            data.send_mail = 0;
+        }
+        data.email = req.body.email;
+        data.local = req.body.local;
+        if (typeof req.body.local == 'undefined') {
+            data.local = 0;
+        }
 
-        if(typeof req.cookies.user_id == 'undefined')
+        if (req.body.title_text) {
+            data.title_text = req.body.title_text;
+        }
+        if (req.body.button_text) {
+            data.button_text = req.body.button_text;
+        }
+        if (req.body.rate_text) {
+            data.rate_text = req.body.rate_text;
+        }
+
+        if (typeof req.cookies.user_id == 'undefined')
             res.cookie('user_id', uuid.v4());
-
+        data.user_id = req.cookies.user_id;
+        var dir = path.join(__dirname, '../public') + '/tmp/' + data.user_id + '/';
         if (data.app_id.split('.').length >= 2) {
             data.os = 'android';
             gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.country})
@@ -343,13 +399,17 @@ router.get('/', function (req, res, next) {
                     data.reviews = app.reviews;
                     data.score = app.score;
                     return data;
-                }).then(function (data) {
-                res.render('show', {title: 'Автогенерация креативов', data: data});
-            }).catch(function (e) {
-                console.log('There was an error fetching the application!');
+                }).then(function (app) {
+                generateAds(app);
+            }).then(function () {
+
+                /*res.set('Content-Type', 'application/zip');
+                res.set('Content-Disposition', 'attachment; filename='+data.host+'/tmp/'+data.user_id+'/formats.zip');
+                return;*/
+            })
+                .catch(function (e) {
+                console.log('There was an error fetching the application!', e.message);
             });
-
-
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
             data.os = 'apple';
@@ -361,77 +421,14 @@ router.get('/', function (req, res, next) {
                     data.reviews = app.reviews;
                     data.score = app.score;
                     return data;
-                }).then(function (data) {
-                res.render('show', {title: 'Автогенерация креативов', data: data});
-            })
-                .catch(function (e) {
-                    console.log('There was an error fetching the application!');
-                });
-        }
-
-    }).post('/generate', function (req, res, next) {
-
-        var ads = {};
-        ads.app_id = req.body.app_id;
-        ads.format = req.body.format;
-        ads.lang = req.body.lang;
-        ads.country = req.body.country;
-        ads.title = req.body.title;
-        ads.icon = req.body.icon;
-        ads.description = req.body.description;
-        ads.reviews = req.body.reviews;
-        ads.score = req.body.score;
-        ads.os = req.body.os;
-
-        var pairs = [];
-        for (var prop in ads) {
-            if (ads.hasOwnProperty(prop)) {
-                var k = encodeURIComponent(prop),
-                    v = encodeURIComponent(ads[prop]);
-                pairs.push( k + "=" + v);
-            }
-        }
-
-        var url = "?" + pairs.join("%26");
-
-        var options = {
-            errorIfStatusIsNot200: true,
-            errorIfJSException: true,
-            screenSize: {
-                width: 300,
-                height: 50
-            }
-        };
-
-        var dir = path.join(__dirname, '../public')+'/tmp/'+req.cookies.user_id+'/';
-        var p = new Promise(function(resolve, reject) {
-
-            if (!fs.existsSync(dir)){
-                fs.mkdirSync(dir);
-            }
-            resolve("result");
-        });
-
-        p.then(function() {
-
-            webshot(req.protocol + '://' + req.get('host') + '/banner'+url, dir+'banner_'+ads.format+'.png', options, function (err) {
-                if (err) return console.log(err);
-                console.log('OK');
+                }).then(function (app) {
+                generateAds(app);
+            }).catch(function (e) {
+                console.log('There was an error fetching the application!', e.message);
             });
-        }).then(function () {
-            var zip = new AdmZip();
-            zip.addLocalFile(dir+'banner_'+ads.format+'.png');
-            zip.writeZip(dir+ads.format+'.zip');
+        }
 
-            var image_name = req.protocol + '://' + req.get('host') +'/tmp/'+req.cookies.user_id+'/banner_'+ads.format+'.png';
-            var zip_name = req.protocol + '://' + req.get('host') +'/tmp/'+req.cookies.user_id+'/'+ads.format+'.zip';
-
-            res.render('result', {title: 'Автогенерация креативов', image: image_name, zip: zip_name});
-        }).catch(function(error) {
-            console.log(error, '1');
-        });
-
-});
+    });
 
 
 module.exports = router;

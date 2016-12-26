@@ -77,67 +77,69 @@ body {
 *  ads 468
 */
 .block_468 {
-  width: 728px;
-  height: 90px;
-  background: #9da1aa;
+  width: 468px;
+  height: 60px;
+  background: url("../images/bg_468_60.png") no-repeat;
   font-family: Helvetica, Arial, sans-serif;
 }
 .block_468 .icon {
-  padding-left: 9px;
-  padding-top: 6px;
-  padding-top: 7px;
-  width: 103px;
-  height: 90px;
+  padding-left: 7px;
+  padding-top: 4px;
+  width: 75px;
+  height: 60px;
   float: left;
 }
 .block_468 .icon img {
-  width: 76px;
-  height: 76px;
+  width: 52px;
+  height: 52px;
 }
 .block_468 .title {
-  width: 416px;
+  width: 229px;
   float: left;
-  height: 90px;
+  height: 60px;
   color: #2d2d2d;
-  padding-top: 18px;
+  padding-top: 10px;
 }
 .block_468 .title span {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: bold;
+  height: 17px;
+  overflow: hidden;
 }
 .block_468 .title .description {
-  font-size: 12px;
-  padding-top: 4px;
+  font-size: 10px;
+  padding-top: 6px;
+  height: 23px;
+  overflow: hidden;
 }
 .block_468 .buttons {
-  background: #c4c7cb;
   float: right;
-  height: 90px;
-  width: 200px;
+  height: 60px;
+  width: 150px;
 }
 .block_468 .buttons .button {
-  width: 183px;
-  height: 53px;
+  width: 128px;
+  height: 37px;
   border-radius: 40px;
   background: #27ae60;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .block_468 .buttons .button .os {
-  width: 116px;
+  width: 81px;
   float: left;
-  font-size: 25px;
+  font-size: 20px;
   color: #fff;
-  line-height: 53px;
+  line-height: 37px;
   text-align: center;
 }
 .block_468 .buttons .button .os_img {
   text-align: center;
   background: #2dc66e;
-  width: 67px;
+  width: 47px;
   float: left;
-  height: 53px;
-  line-height: 53px;
+  height: 37px;
+  line-height: 37px;
   border-radius: 0px 40px 40px 0px;
 }
 .block_468 .buttons .button .os_img img {
@@ -150,68 +152,67 @@ body {
 *  ads 728
 */
 .block_728 {
-  width: 468px;
-  height: 60px;
-  background: #9da1aa;
+  width: 728px;
+  height: 90px;
+  background: url("../images/bg_728_90.png") no-repeat;
   font-family: Helvetica, Arial, sans-serif;
 }
 .block_728 .icon {
-  padding-left: 7px;
-  padding-top: 3px;
-  padding-top: 4px;
-  width: 74px;
-  height: 60px;
+  padding-left: 9px;
+  padding-top: 6px;
+  padding-top: 7px;
+  width: 103px;
+  height: 90px;
   float: left;
 }
 .block_728 .icon img {
-  width: 52px;
-  height: 52px;
+  width: 76px;
+  height: 76px;
 }
 .block_728 .title {
-  width: 236px;
+  width: 407px;
   float: left;
-  height: 60px;
+  height: 90px;
   color: #2d2d2d;
-  padding-top: 9px;
+  padding-top: 18px;
 }
 .block_728 .title span {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
 }
 .block_728 .title .description {
-  font-size: 10px;
+  font-size: 12px;
   padding-top: 4px;
 }
 .block_728 .buttons {
-  background: #c4c7cb;
   float: right;
-  height: 60px;
-  width: 151px;
+  height: 90px;
+  width: 208px;
 }
 .block_728 .buttons .button {
-  width: 128px;
-  height: 37px;
-  border-radius: 20px;
+  width: 183px;
+  height: 53px;
+  border-radius: 40px;
   background: #27ae60;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 20px;
 }
 .block_728 .buttons .button .os {
-  width: 82px;
+  width: 116px;
   float: left;
-  font-size: 16px;
+  font-size: 25px;
   color: #fff;
-  line-height: 37px;
+  line-height: 53px;
   text-align: center;
 }
 .block_728 .buttons .button .os_img {
   text-align: center;
   background: #2dc66e;
-  width: 46px;
+  width: 67px;
   float: left;
-  height: 37px;
-  line-height: 33px;
-  border-radius: 0px 20px 20px 0px;
+  height: 53px;
+  line-height: 53px;
+  border-radius: 0px 40px 40px 0px;
 }
 .block_728 .buttons .button .os_img img {
   vertical-align: middle;

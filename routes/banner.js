@@ -26,24 +26,25 @@ var phones = {
 router.get('/', function (req, res, next) {
 
     var q  = parseQuery(req.url);
+
     var template = '';
-    if(q.format == '300x50'){
+    if(q.format == '300_50'){
         template = 'banner_300';
-    }else if(q.format == '320x50'){
+    }else if(q.format == '320_50'){
         template = 'banner_320';
-    }else if(q.format == '468x60'){
+    }else if(q.format == '468_60'){
         template = 'banner_468';
-    }else if(q.format == '728x90'){
+    }else if(q.format == '728_90'){
         template = 'banner_728';
-    }else if(q.format == '300x250'){
+    }else if(q.format == '300_250'){
         template = 'banner_300_250';
-    }else if(q.format == '300x250(2)'){
+    }else if(q.format == '300_250_2'){
         template = 'banner_300_250_1';
-    }else if(q.format == '320x480'){
+    }else if(q.format == '320_480'){
         template = 'banner_320_480';
-    }else if(q.format == '480x320'){
+    }else if(q.format == '480_320'){
         template = 'banner_480_320';
-    }else if(q.format == '480x320(2)'){
+    }else if(q.format == '480_320_2'){
         template = 'banner_480_320_2';
     }
 
