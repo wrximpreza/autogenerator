@@ -71,7 +71,7 @@ router.get('/', function (req, res, next) {
     }
 
     if (q.title_text) {
-        translate.title = q.title_text;
+        q.title = q.title_text;
     }
     if (q.button_text) {
         translate.install = q.button_text;
