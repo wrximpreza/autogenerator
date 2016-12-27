@@ -12,7 +12,6 @@ var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
 var fs = require('fs');
 var webshot = require('webshot');
-var AdmZip = require('adm-zip');
 var archiver = require('archiver');
 
 var nodemailer = require('nodemailer');
