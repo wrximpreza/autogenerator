@@ -13,6 +13,7 @@ var cookieParser = require('cookie-parser');
 var fs = require('fs');
 var webshot = require('webshot');
 var AdmZip = require('adm-zip');
+var archiver = require('archiver');
 
 var nodemailer = require('nodemailer');
 
@@ -136,6 +137,8 @@ router.get('/', function (req, res, next) {
     res.render('index', {lang: lang, formats: formats});
 })
     .post('/', function (req, res, next) {
+        data = {};
+        data.images = [];
 
         data.host = req.protocol + '://' + req.get('host');
         data.app_id = req.body.app;
@@ -190,12 +193,27 @@ router.get('/', function (req, res, next) {
                     return promise.then(function () {
                         return data.images;
                     }).then(function (result) {
-                            var zip = new AdmZip();
-                            data.images.forEach(function (item) {
-                                zip.addLocalFile(item);
-                            });
-                            zip.writeZip(dir + 'formats.zip');
-                            data.zip = data.host + '/tmp/' + data.user_id + '/formats.zip';
+
+                        data.zip = data.host + '/tmp/' + data.user_id + '/formats.zip';
+
+                        var archive  = archiver('zip');
+                        var output = fs.createWriteStream(dir + 'formats.zip');
+                        archive.pipe(output);
+
+                        var getStream = function(fileName){
+                            return fs.readFileSync(fileName);
+                        };
+                        data.images.forEach(function (item) {
+                            var imgs = item.split('/');
+                            archive.append(getStream(item), { name: imgs[imgs.length-1]});
+                        });
+                        archive.finalize(function(err, bytes) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            console.log(bytes + ' total bytes');
+                        });
+
                         return result;
                     }).catch(function (error) {
                         console.log(error);
@@ -233,12 +251,26 @@ router.get('/', function (req, res, next) {
                         return data.images;
                     }).then(function (result) {
 
-                            var zip = new AdmZip();
-                            data.images.forEach(function (item) {
-                                zip.addLocalFile(item);
-                            });
-                            zip.writeZip(dir + 'formats.zip');
-                            data.zip = data.host + '/tmp/' + data.user_id + '/formats.zip';
+                        data.zip = data.host + '/tmp/' + data.user_id + '/formats.zip';
+
+                        var archive  = archiver('zip');
+                        var output = fs.createWriteStream(dir + 'formats.zip');
+                        archive.pipe(output);
+
+                        var getStream = function(fileName){
+                            return fs.readFileSync(fileName);
+                        };
+                        data.images.forEach(function (item) {
+                            var imgs = item.split('/');
+                            archive.append(getStream(item), { name: imgs[imgs.length-1]});
+                        });
+                        archive.finalize(function(err, bytes) {
+                            if (err) {
+                                console.log(err);
+                            }
+                            console.log(bytes + ' total bytes');
+                        });
+                        return result;
 
                     }).catch(function (error) {
                         console.log(error);
