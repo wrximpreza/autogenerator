@@ -268,7 +268,7 @@ body {
   margin-top: 14px;
   overflow: hidden;
   height: 27px;
-  margin-bottom: 64px;
+  margin-bottom: 62px;
 }
 .block_320_250 .top .right .star {
   margin-top: 25px;
@@ -736,9 +736,19 @@ body {
 /*
  * end ads 480x320(2)
  */
-#install_ru {
+#install_ru,
+#install_fr {
   font-size: 12px;
 }
-.block_728 #install_ru {
+.block_728 #install_ru,
+.block_728 #install_fr {
   font-size: 17px;
+}
+#install_de,
+#install_es {
+  font-size: 13px;
+}
+.block_728 #install_de,
+.block_728 #install_es {
+  font-size: 15px;
 }

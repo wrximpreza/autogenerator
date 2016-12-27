@@ -25,7 +25,7 @@ var lang = {
     "ru": "Russsian",
     "es": "Spain",
     "fr": "France",
-    "ch": "China",
+    "cn": "China",
     "de": "Deutsch"
 };
 
@@ -62,6 +62,7 @@ function httpGet(format) {
                 width: size[0],
                 height: size[1]
             },
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
             onLoadFinished: function () {
 
             }

@@ -22,7 +22,7 @@ var translation = {
         'install': 'Installer',
         'ratings': 'Evaluations'
     },
-    'ch': {
+    'cn': {
         'install': '安装',
         'ratings': '評分'
     },
