@@ -38,7 +38,7 @@ var phones = {
 };
 
 
-
+// width="46" height="46"
 router.get('/', function (req, res, next) {
 
     var q  = parseQuery(req.url);
