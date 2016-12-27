@@ -26,7 +26,7 @@ body {
   height: 46px;
 }
 .block_1 .title {
-  width: 112px;
+  width: 102px;
   float: left;
   height: 33px;
   overflow: hidden;
@@ -34,9 +34,10 @@ body {
   font-size: 14px;
   padding-top: 9px;
   font-weight: bold;
+  padding-right: 10px;
 }
 .block_1.width320 .title {
-  width: 132px;
+  width: 122px;
   line-height: 50px;
   padding-top: 0px;
 }
@@ -95,11 +96,12 @@ body {
   height: 52px;
 }
 .block_468 .title {
-  width: 229px;
+  width: 219px;
   float: left;
   height: 60px;
   color: #2d2d2d;
   padding-top: 10px;
+  padding-right: 10px;
 }
 .block_468 .title span {
   font-size: 16px;
@@ -112,7 +114,7 @@ body {
 }
 .block_468 .title .description {
   font-size: 10px;
-  padding-top: 6px;
+  padding-top: 3px;
   height: 23px;
   overflow: hidden;
   padding-right: 10px;
@@ -175,23 +177,24 @@ body {
   height: 76px;
 }
 .block_728 .title {
-  width: 407px;
+  width: 392px;
   float: left;
   height: 90px;
   color: #2d2d2d;
   padding-top: 18px;
+  padding-right: 15px;
 }
 .block_728 .title span {
   font-size: 22px;
   font-weight: bold;
-  height: 25px;
+  height: 27px;
   overflow: hidden;
   display: block;
 }
 .block_728 .title .description {
   font-size: 12px;
   padding-top: 4px;
-  height: 30px;
+  height: 28px;
   overflow: hidden;
 }
 .block_728 .buttons {
@@ -264,7 +267,8 @@ body {
   font-size: 28px;
   margin-top: 14px;
   overflow: hidden;
-  height: 32px;
+  height: 27px;
+  margin-bottom: 77px;
 }
 .block_320_250 .top .right .star {
   margin-top: 25px;
@@ -283,7 +287,7 @@ body {
   line-height: 18px;
   display: block;
   clear: both;
-  height: 39px;
+  height: 34px;
   overflow: hidden;
 }
 .block_320_250 .bottom {
@@ -361,9 +365,10 @@ body {
   font-size: 12px;
   line-height: 18px;
   display: block;
-  height: 70px;
+  height: 69px;
   overflow: hidden;
   margin-top: 14px;
+  margin-bottom: 35px;
 }
 .block_320_250_1 .top .right .star {
   margin-top: 18px;
@@ -382,7 +387,7 @@ body {
   display: block;
   clear: both;
   text-align: center;
-  height: 40px;
+  height: 27px;
   overflow: hidden;
 }
 .block_320_250_1 .bottom {
@@ -455,8 +460,9 @@ body {
   color: #2d2d2d;
   font-size: 26px;
   text-align: center;
-  height: 31px;
+  height: 25px;
   overflow: hidden;
+  margin-bottom: 6px;
 }
 .block_320_480 .top .votes {
   width: 100%;
@@ -482,9 +488,10 @@ body {
   font-size: 12px;
   display: block;
   clear: both;
-  height: 40px;
+  height: 33px;
   overflow: hidden;
   line-height: 18px;
+  margin-bottom: 7px;
 }
 .block_320_480 .bottom {
   height: 80px;
@@ -498,7 +505,7 @@ body {
   text-align: center;
   border-radius: 40px;
   position: relative;
-  top: 26px;
+  top: 28px;
 }
 .block_320_480 .bottom .button .txt {
   background: #27ae60;
@@ -515,7 +522,7 @@ body {
   float: right;
   height: 34px;
   font-size: 12px;
-  line-height: 34px;
+  line-height: 35px;
   border-radius: 0 40px 40px 0;
 }
 .block_320_480 .bottom .button .icon img {
@@ -606,7 +613,7 @@ body {
   float: right;
   height: 34px;
   font-size: 12px;
-  line-height: 34px;
+  line-height: 35px;
   border-radius: 0 40px 40px 0;
 }
 .block_480_320 .top .right .button .icon img {
@@ -626,7 +633,7 @@ body {
   line-height: 18px;
   display: block;
   clear: both;
-  height: 55px;
+  height: 51px;
   overflow: hidden;
 }
 /*
@@ -717,13 +724,13 @@ body {
   overflow: hidden;
 }
 .block_480_320_2 .right .description {
-  padding-top: 27px;
+  padding-top: 23px;
   color: #2d2d2d;
   font-size: 12px;
   line-height: 18px;
   display: block;
   clear: both;
-  height: 182px;
+  height: 178px;
   overflow: hidden;
 }
 /*

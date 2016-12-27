@@ -177,7 +177,7 @@ router.get('/', function (req, res, next) {
         var dir = path.join(__dirname, '../public') + '/tmp/' + data.user_id + '/';
         if (data.app_id.split('.').length >= 2) {
             data.os = 'android';
-            gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.country})
+            gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.lang})
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;
@@ -235,7 +235,7 @@ router.get('/', function (req, res, next) {
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
             data.os = 'apple';
-            store.app({id: data.app_id})
+            store.app({id: data.app_id, 'country': data.lang})
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;

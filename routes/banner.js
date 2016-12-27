@@ -8,9 +8,25 @@ app.use(cookieParser());
 var translation = {
     'ru': {
         'install': 'Install',
-        'ratings': 'Ratings'
+        'ratings': 'Рейтинг﻿'
     },
     'en': {
+        'install': 'Install',
+        'ratings': 'Ratings'
+    },
+    'sp': {
+        'install': 'Install',
+        'ratings': 'Ratings'
+    },
+    'fr': {
+        'install': 'Install',
+        'ratings': 'Ratings'
+    },
+    'ch': {
+        'install': 'Install',
+        'ratings': 'Ratings'
+    },
+    'de': {
         'install': 'Install',
         'ratings': 'Ratings'
     }
@@ -65,6 +81,7 @@ router.get('/', function (req, res, next) {
     }
     q.score = Math.round(q.score);
     res.render('banners/'+template, {data: q, translation: translate, phones: phones[q.os]});
+
 });
 
 function parseQuery(qstr) {
