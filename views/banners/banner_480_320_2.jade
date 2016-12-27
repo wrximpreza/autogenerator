@@ -11,11 +11,11 @@ block content
                             img(src="./images/star_light.png")
                         -for (var z = data.score; z < 5; z++)
                             img(src="./images/star_dark.png")
-                    div.raiting #{data.reviews} #{translation.ratings}
+                    div.raiting(id="ratings_#{data.lang}") #{data.reviews} #{translation.ratings}
                 div.button
                     div.icon
                         img(src='/images/#{data.os}_icon.png' width="20" height="20")
-                    div.txt #{translation.install}
+                    div.txt(id="install_#{data.lang}") #{translation.install}
             div.right
                 div.title #{data.title}
                 div.description #{data.description}

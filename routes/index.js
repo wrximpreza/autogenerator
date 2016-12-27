@@ -23,7 +23,7 @@ var formats = [
 var lang = {
     "en": "English",
     "ru": "Russsian",
-    "sp": "Spain",
+    "es": "Spain",
     "fr": "France",
     "ch": "China",
     "de": "Deutsch"
@@ -235,7 +235,11 @@ router.get('/', function (req, res, next) {
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
             data.os = 'apple';
-            store.app({id: data.app_id, 'country': data.lang})
+            var lg = data.lang;
+            if(data.lang == 'en'){
+                lg = 'us';
+            }
+            store.app({id: data.app_id, 'country': lg})
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;
@@ -284,7 +288,7 @@ router.get('/', function (req, res, next) {
                         res.render('index', {lang: lang, formats: formats, status: '1', data: data});
                     }
             }).catch(function (e) {
-                console.log('There was an error fetching the application!', e.message);
+                console.log('There was an error fetching the application!', e);
                 res.render('error', {message: e.message});
             });
         }

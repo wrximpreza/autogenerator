@@ -7,28 +7,28 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 var translation = {
     'ru': {
-        'install': 'Install',
+        'install': 'Установить',
         'ratings': 'Рейтинг﻿'
     },
     'en': {
         'install': 'Install',
         'ratings': 'Ratings'
     },
-    'sp': {
-        'install': 'Install',
-        'ratings': 'Ratings'
+    'es': {
+        'install': 'Instalar',
+        'ratings': 'Calificaciones'
     },
     'fr': {
-        'install': 'Install',
-        'ratings': 'Ratings'
+        'install': 'Installer',
+        'ratings': 'Evaluations'
     },
     'ch': {
-        'install': 'Install',
-        'ratings': 'Ratings'
+        'install': '安装',
+        'ratings': '評分'
     },
     'de': {
-        'install': 'Install',
-        'ratings': 'Ratings'
+        'install': 'Installieren',
+        'ratings': 'Wertung'
     }
 };
 
@@ -79,9 +79,10 @@ router.get('/', function (req, res, next) {
     if (q.rate_text) {
         translate.ratings = q.rate_text;
     }
-    q.score = Math.round(q.score);
-    res.render('banners/'+template, {data: q, translation: translate, phones: phones[q.os]});
+    var score = q.score;
+    q.score = parseInt(score);
 
+    res.render('banners/'+template, {data: q, translation: translate, phones: phones[q.os]});
 });
 
 function parseQuery(qstr) {

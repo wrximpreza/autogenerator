@@ -16,7 +16,7 @@ block content
                 div.raiting #{data.reviews} #{translation.ratings}
         div.bottom
             div.button
-                div.txt #{translation.install}
+                div.txt(id="install_#{data.lang}") #{translation.install}
                 div.icon
                     span #{phones}
                     img(src='/images/#{data.os}_icon.png' width="20" height="20")

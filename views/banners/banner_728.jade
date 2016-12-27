@@ -9,6 +9,6 @@ block content
             div.description #{data.description}
         div.buttons
             div.button
-                div.os #{translation.install}
+                div.os(id="install_#{data.lang}") #{translation.install}
                 div.os_img
                     img(src='/images/#{data.os}_icon.png' width="33" height="33")
