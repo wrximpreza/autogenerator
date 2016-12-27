@@ -9,6 +9,16 @@ html
     link(href='https://cdn.jsdelivr.net/g/jquery.tooltipster@4.1.6(css/tooltipster.bundle.min.css+css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css)' rel='stylesheet')
     link(href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
   body
+    div#preloader
+    div.container
+      header
+        div.row
+          div.logo.col.s12
+            div.col.s7.m4.l2
+              a(href="/")
+                img(src="/images/logo.png" width=150)
+            div.col.s5.m8.l10
+              span Генератор Баннеров
     block content
 
     footer.footer
@@ -19,10 +29,11 @@ html
     script(src="/javascripts/main.js")
     if status == "1"
       div#mylightbox.lightbox
-        div Сообщение отправлено
+        div #{data.email_message}
         if data.download == 1
-           div
-             a.download(href="#{data.zip}") Скачать архив
+          if data.zip!=''
+            div
+              a.download(href="#{data.zip}") Скачать архив
       a#lightbox_click(data-featherlight="#mylightbox")
 
     a(data-target="modal1")

@@ -293,3 +293,30 @@ footer {
   overflow: visible;
   background: rgba(255,255,255,0.8) url("../images/preload.gif") no-repeat center center;
 }
+@media (max-width: 600px) {
+  .logo span {
+    margin-top: 0px;
+  }
+  .block_input {
+    height: 100%;
+  }
+  .localization {
+    height: 100%;
+  }
+  .foot_button {
+    margin-top: 0px;
+  }
+  .banners .input_texts {
+    margin-top: 0px;
+  }
+  .banners .input_texts .input_text .input-field.inline input {
+    width: 100%;
+  }
+  .localization .select-wrapper {
+    float: none;
+    margin: 0 auto;
+  }
+  .localization .no_local {
+    text-align: center;
+  }
+}
