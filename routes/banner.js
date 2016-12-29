@@ -5,41 +5,41 @@ var app = express();
 var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
-var translation = {
-    'ru': {
-        'install': 'Установить',
-        'ratings': 'Рейтинг﻿'
-    },
-    'en': {
-        'install': 'Install',
-        'ratings': 'Ratings'
-    },
-    'es': {
-        'install': 'Instalar',
-        'ratings': 'Calificaciones'
-    },
-    'fr': {
-        'install': 'Installer',
-        'ratings': 'Evaluations'
-    },
-    'cn': {
-        'install': '安装',
-        'ratings': '評分'
-    },
-    'de': {
-        'install': 'Installieren',
-        'ratings': 'Wertung'
-    }
-};
-
-var phones = {
-    'apple': 'on App Store',
-    'android': 'on Google Play'
-};
 
 
-// width="46" height="46"
 router.get('/', function (req, res, next) {
+
+    var translation = {
+        'ru': {
+            'install': 'Установить',
+            'ratings': 'Рейтинг﻿'
+        },
+        'en': {
+            'install': 'Install',
+            'ratings': 'Ratings'
+        },
+        'es': {
+            'install': 'Instalar',
+            'ratings': 'Calificaciones'
+        },
+        'fr': {
+            'install': 'Installer',
+            'ratings': 'Evaluations'
+        },
+        'cn': {
+            'install': '安装',
+            'ratings': '評分'
+        },
+        'de': {
+            'install': 'Installieren',
+            'ratings': 'Wertung'
+        }
+    };
+
+    var phones = {
+        'apple': 'on App Store',
+        'android': 'on Google Play'
+    };
 
     var q  = parseQuery(req.url);
 
@@ -81,6 +81,7 @@ router.get('/', function (req, res, next) {
             translate.ratings = q.rate_text;
         }
     }
+
     var score = q.score;
     q.score = parseInt(score);
 

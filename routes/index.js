@@ -132,8 +132,6 @@ router.get('/', function (req, res, next) {
             console.log('all files are removed');
         });
     }
-    data = {};
-    data.images = [];
     res.render('index', {lang: lang, formats: formats});
 })
     .post('/result', function (req, res, next) {
