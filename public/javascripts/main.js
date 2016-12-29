@@ -28,7 +28,14 @@ $(document).ready(function() {
             $('.banners .no').hide();
         }
     });
-    //$('.myElement').featherlight();
+
+    $('#lightbox_click').featherlight({
+        targetAttr: 'href',
+        afterClose: function () {
+            location.href = '/';
+        }
+    });
+
     $('#lightbox_click').trigger('click');
     $('.modal').modal({
             dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -42,7 +49,7 @@ $(document).ready(function() {
             },
             complete: function() {
 
-                 } // Callback for Modal close
+            }
         }
     );
 });

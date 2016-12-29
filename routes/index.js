@@ -136,7 +136,7 @@ router.get('/', function (req, res, next) {
     data.images = [];
     res.render('index', {lang: lang, formats: formats});
 })
-    .post('/', function (req, res, next) {
+    .post('/result', function (req, res, next) {
         data = {};
         data.images = [];
 

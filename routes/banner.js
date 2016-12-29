@@ -70,14 +70,16 @@ router.get('/', function (req, res, next) {
         var translate = translation[q.lang];
     }
 
-    if (q.title_text) {
-        q.title = q.title_text;
-    }
-    if (q.button_text) {
-        translate.install = q.button_text;
-    }
-    if (q.rate_text) {
-        translate.ratings = q.rate_text;
+    if(q.local == 1) {
+        if (q.title_text) {
+            q.title = q.title_text;
+        }
+        if (q.button_text) {
+            translate.install = q.button_text;
+        }
+        if (q.rate_text) {
+            translate.ratings = q.rate_text;
+        }
     }
     var score = q.score;
     q.score = parseInt(score);
