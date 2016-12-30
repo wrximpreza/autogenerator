@@ -115,7 +115,7 @@ body {
 .block_468 .title .description {
   font-size: 10px;
   padding-top: 3px;
-  height: 23px;
+  height: 25px;
   overflow: hidden;
   padding-right: 10px;
 }
@@ -264,8 +264,8 @@ body {
 }
 .block_320_250 .top .right .title {
   color: #2d2d2d;
-  font-size: 28px;
-  margin-top: 14px;
+  font-size: 26px;
+  margin-top: 12px;
   overflow: hidden;
   height: 62px;
   margin-bottom: 0px;
@@ -463,7 +463,7 @@ body {
   color: #2d2d2d;
   font-size: 26px;
   text-align: center;
-  height: 30px;
+  height: 32px;
   overflow: hidden;
   margin-bottom: 2px;
 }
@@ -676,7 +676,7 @@ body {
 .block_480_320_2 .left .votes .raiting {
   color: #000;
   font-size: 12px;
-  width: 140px;
+  width: 105px;
   float: right;
   text-align: right;
 }
@@ -867,6 +867,7 @@ body {
   height: 16px;
   line-height: 20px;
   margin-top: 20px;
+  overflow: hidden;
 }
 .block_400_300_2 .left .votes .star {
   width: 60px;
