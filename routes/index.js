@@ -157,6 +157,9 @@ router.get('/', function (req, res, next) {
         if (req.body.title_text) {
             data.title_text = req.body.title_text;
         }
+        if (req.body.description_text) {
+            data.description_text = req.body.description_text;
+        }
         if (req.body.button_text) {
             data.button_text = req.body.button_text;
         }
