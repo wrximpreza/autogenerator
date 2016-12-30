@@ -267,7 +267,7 @@ body {
   font-size: 28px;
   margin-top: 14px;
   overflow: hidden;
-  height: 60px;
+  height: 62px;
   margin-bottom: 0px;
   padding-right: 10px;
   word-wrap: break-word;
@@ -559,7 +559,6 @@ body {
 .block_480_320 .top .left img {
   width: 166px;
   height: 166px;
-  background: #fff;
 }
 .block_480_320 .top .right {
   float: left;
@@ -662,7 +661,6 @@ body {
 .block_480_320_2 .left .image img {
   width: 166px;
   height: 166px;
-  background: #fff;
 }
 .block_480_320_2 .left .votes {
   width: 166px;
@@ -739,6 +737,208 @@ body {
 /*
  * end ads 480x320(2)
  */
+/*
+*  ads 400x300
+*/
+.block_400_300 {
+  width: 400px;
+  height: 300px;
+  background: url("../images/bg_400_300.png") no-repeat;
+  font-family: Helvetica, Arial, sans-serif;
+  display: block;
+}
+.block_400_300 .top {
+  height: 187px;
+}
+.block_400_300 .top .left {
+  width: 157px;
+  float: left;
+  display: block;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.block_400_300 .top .left img {
+  width: 145px;
+  height: 145px;
+}
+.block_400_300 .top .right {
+  float: left;
+  width: 225px;
+  display: block;
+}
+.block_400_300 .top .right .title {
+  color: #2d2d2d;
+  font-size: 20px;
+  margin-top: 18px;
+  height: 45px;
+  overflow: hidden;
+}
+.block_400_300 .top .right .votes {
+  width: 100%;
+  height: 12px;
+  line-height: 12px;
+  margin-top: 26px;
+}
+.block_400_300 .top .right .votes .star {
+  width: 50%;
+  float: left;
+  padding-top: 3px;
+}
+.block_400_300 .top .right .votes .raiting {
+  color: #000;
+  font-size: 12px;
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+.block_400_300 .top .right .button {
+  width: 100%;
+  height: 34px;
+  margin: 0 auto;
+  background: #fff;
+  color: #fff;
+  text-align: center;
+  border-radius: 40px;
+  margin-top: 30px;
+}
+.block_400_300 .top .right .button .txt {
+  background: #27ae60;
+  font-size: 20px;
+  width: 85px;
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 40px 0px 0px 40px;
+}
+.block_400_300 .top .right .button .icon {
+  background: #2aba67;
+  width: 140px;
+  float: right;
+  height: 34px;
+  font-size: 12px;
+  line-height: 35px;
+  border-radius: 0 40px 40px 0;
+}
+.block_400_300 .top .right .button .icon img {
+  top: 5px;
+  left: 5px;
+  position: relative;
+}
+.block_400_300 .bottom {
+  height: 96px;
+}
+.block_400_300 .bottom .description {
+  padding-top: 22px;
+  margin-left: 30px;
+  margin-right: 30px;
+  color: #2d2d2d;
+  font-size: 12px;
+  line-height: 18px;
+  display: block;
+  clear: both;
+  height: 51px;
+  overflow: hidden;
+}
+/*
+ * end ads 400x300
+ */
+/*
+*  ads 400x300(2)
+*/
+.block_400_300_2 {
+  width: 400px;
+  height: 300px;
+  background: url("../images/bg_400_300_2.png") no-repeat;
+  font-family: Helvetica, Arial, sans-serif;
+  display: block;
+}
+.block_400_300_2 .left {
+  width: 189px;
+  float: left;
+  display: block;
+  padding-top: 25px;
+  padding-left: 16px;
+}
+.block_400_300_2 .left .image img {
+  width: 166px;
+  height: 166px;
+}
+.block_400_300_2 .left .votes {
+  width: 166px;
+  height: 16px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+.block_400_300_2 .left .votes .star {
+  width: 40%;
+  float: left;
+  padding-top: 3px;
+}
+.block_400_300_2 .left .votes .raiting {
+  color: #000;
+  font-size: 12px;
+  width: 60%;
+  float: right;
+  text-align: right;
+}
+.block_400_300_2 .left .button {
+  width: 166px;
+  height: 34px;
+  background: #fff;
+  color: #fff;
+  text-align: center;
+  border-radius: 40px;
+  margin-top: 20px;
+}
+.block_400_300_2 .left .button .txt {
+  background: #27ae60;
+  font-size: 20px;
+  width: 111px;
+  float: right;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 0px 40px 40px 0px;
+}
+.block_400_300_2 .left .button .icon {
+  background: #2aba67;
+  width: 55px;
+  float: left;
+  height: 34px;
+  font-size: 12px;
+  line-height: 34px;
+  border-radius: 40px 0px 0px 40px;
+}
+.block_400_300_2 .left .button .icon img {
+  top: 5px;
+  left: 5px;
+  position: relative;
+}
+.block_400_300_2 .right {
+  float: left;
+  width: 175px;
+  padding-right: 20px;
+  display: block;
+}
+.block_400_300_2 .right .title {
+  color: #2d2d2d;
+  font-size: 18px;
+  margin-top: 30px;
+  height: 42px;
+  overflow: hidden;
+}
+.block_400_300_2 .right .description {
+  padding-top: 30px;
+  color: #2d2d2d;
+  font-size: 11px;
+  line-height: 18px;
+  display: block;
+  clear: both;
+  height: 178px;
+  overflow: hidden;
+}
+/*
+ * end ads 480x320(2)
+ */
 #install_ru,
 #install_fr {
   font-size: 11px;
@@ -746,6 +946,10 @@ body {
 .block_728 #install_ru,
 .block_728 #install_fr {
   font-size: 16px;
+}
+.block_1 #install_de,
+#install_es {
+  font-size: 11px;
 }
 #install_de,
 #install_es {

@@ -37,8 +37,8 @@ router.get('/', function (req, res, next) {
     };
 
     var phones = {
-        'apple': 'on App Store',
-        'android': 'on Google Play'
+        'apple': 'App Store',
+        'android': 'Google Play'
     };
 
     var q  = parseQuery(req.url);
@@ -62,6 +62,10 @@ router.get('/', function (req, res, next) {
         template = 'banner_480_320';
     }else if(q.format == '480_320_2'){
         template = 'banner_480_320_2';
+    }else if(q.format == '400_300'){
+        template = 'banner_400_300';
+    }else if(q.format == '400_300_2'){
+        template = 'banner_400_300_2';
     }
 
     if(typeof translation[q.lang] == 'undefined'){
