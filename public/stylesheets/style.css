@@ -190,6 +190,10 @@ header {
   height: 100px;
   padding: 10px;
 }
+.banners .box .description div textarea {
+  height: 100%;
+  padding: 10px;
+}
 .banners .box .description.active {
   display: block;
 }

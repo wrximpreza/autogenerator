@@ -4,7 +4,8 @@ block content
     div.block_1.width320
         div.icon
             img(src=data.icon width="46" height="46")
-        div.title #{data.title}
+        div.title
+            span #{data.title}
         div.buttons
             div.button
                 div.os(id="install_#{data.lang}") #{translation.install}

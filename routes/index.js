@@ -142,6 +142,8 @@ router.get('/', function (req, res, next) {
         data.app_id = req.body.app;
         data.lang = req.body.lang;
         data.formats = req.body['format[]'];
+        data.description_text = req.body['description_text[]'];
+
         data.send_mail = req.body.send_mail;
         if (typeof req.body.send_mail == 'undefined') {
             data.send_mail = 0;
@@ -156,9 +158,6 @@ router.get('/', function (req, res, next) {
 
         if (req.body.title_text) {
             data.title_text = req.body.title_text;
-        }
-        if (req.body.description_text) {
-            data.description_text = req.body.description_text;
         }
         if (req.body.button_text) {
             data.button_text = req.body.button_text;
@@ -183,7 +182,7 @@ router.get('/', function (req, res, next) {
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;
-                    data.description = app.summary;
+                    data.description = app.description;
                     data.reviews = app.reviews;
                     data.score = app.score;
                     if (!fs.existsSync(data.dir)) {

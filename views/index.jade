@@ -37,10 +37,6 @@ block content
                             div.input-field.inline.col.s12.m9.l9
                                 input(type="text" name="title_text" value="")
                         div.input_text
-                            div.col.s12.m3.l3(style="padding-left:0px;") Описание приложения
-                            div.input-field.inline.col.s12.m9.l9
-                                input(type="text" name="description_text" value="")
-                        div.input_text
                             div.input_text
                                 div.col.s12.m3.l3 Название кнопки
                             div.input-field.inline.col.s12.m9.l9
@@ -62,8 +58,6 @@ block content
                                 div.format_image
                                     img(src="/images/formats/banner_300_50.png")
                                 div.format_name 300x50
-                                div.description
-                                    div Описание текста
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -72,8 +66,6 @@ block content
                                 div.format_image
                                     img(src="/images/formats/banner_300_50.png")
                                 div.format_name 320x50
-                                div.description
-                                    div Описание текста
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -83,7 +75,8 @@ block content
                                     img(src="/images/formats/banner_728_90.png")
                                 div.format_name 728x90
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" data-limit="133" name="description_text[728_90]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -93,7 +86,8 @@ block content
                                     img(src="/images/formats/banner_728_90.png")
                                 div.format_name 468x60
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" data-limit="133" name="description_text[468_60]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -103,17 +97,19 @@ block content
                                     img(src="/images/formats/banner_300_250.png")
                                 div.format_name 300x250 V1
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" data-limit="" name="description_text[300_250]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
-                                    input#format_300_250_2.filled-in(type="checkbox" name="format[]" value="300_250_2")
+                                    input#format_300_250_2.filled-in(type="checkbox" name="format[]" value="480_320")
                                     label(for="format_300_250_2")
                                 div.format_image.top
                                     img(src="/images/formats/banner_300_250_2.png")
                                 div.format_name 300x250 V2
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[480_320]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -123,7 +119,8 @@ block content
                                     img(src="/images/formats/banner_480_320.png")
                                 div.format_name 480x320 V1
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[480_320]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -133,7 +130,8 @@ block content
                                     img(src="/images/formats/banner_480_320_2.png")
                                 div.format_name 480x320 V2
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[480_320_2]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -143,7 +141,8 @@ block content
                                     img(src="/images/formats/banner_320_480.png")
                                 div.format_name 320x480
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[320_480]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -153,7 +152,8 @@ block content
                                     img(src="/images/formats/banner_300_250.png")
                                 div.format_name 400x300
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[400_300]" placeholder="Введите описание")
                         div.col.s12.m6.l3
                             div.box
                                 div.check
@@ -163,7 +163,8 @@ block content
                                     img(src="/images/formats/banner_300_250_2.png")
                                 div.format_name 400x300 V2
                                 div.description
-                                    div Описание текста
+                                    div
+                                        textarea(type="text" name="description_text[400_300_2]" placeholder="Введите описание")
         div.foot_button
             div.container
                 div.row
