@@ -82,7 +82,9 @@ $(document).ready(function() {
 
         var size = format.split('_');
         $.featherlight({
-            iframe: data, iframeWidth: parseInt(size[0])+20,
+            iframe: data,
+            loading: 'Загрузка...',
+            iframeWidth: parseInt(size[0])+20,
             iframeHeight: parseInt(size[1])+20
         });
 

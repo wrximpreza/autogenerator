@@ -353,7 +353,7 @@ router.get('/', function (req, res, next) {
                     res.redirect(href);
                 }).catch(function (e) {
                 console.log('There was an error fetching the application!', e.message);
-                res.render('error', {message: e.message});
+                res.render('error_lightbox', {message: e.message});
             });
         } else {
             data.app_id = data.app_id.substring(2, data.app_id.length);
@@ -373,7 +373,7 @@ router.get('/', function (req, res, next) {
                     res.redirect(href);
                 }).catch(function (e) {
                 console.log('There was an error fetching the application!', e);
-                res.render('error', {message: e.message});
+                res.render('error_lightbox', {message: e.message});
             });
         }
 
