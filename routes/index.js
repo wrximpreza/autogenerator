@@ -158,7 +158,7 @@ router.get('/', function (req, res, next) {
         data = {};
         data.images = [];
 
-        data.host = req.protocol + '://' + req.get('host');
+        data.host = '//' + req.get('host');
         data.app_id = req.body.app;
         data.lang = req.body.lang;
         data.formats = req.body['format[]'];

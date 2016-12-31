@@ -77,7 +77,7 @@ $(document).ready(function() {
         }
 
         var format = $(this).data('format');
-        var data = location.href+'show?'+$('form.send_form').serialize();
+        var data = '//'+location.host+'/show?'+$('form.send_form').serialize();
         data += '&format='+format;
 
         var size = format.split('_');
