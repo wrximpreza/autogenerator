@@ -8,9 +8,9 @@ block content
             div.votes
                 div.star
                     -for (var x = 0; x < data.score; x++)
-                    img(src="./images/star_light.png")
+                        img(src="./images/star_light.png")
                     -for (var z = data.score; z < 5; z++)
-                    img(src="./images/star_dark.png")
+                        img(src="./images/star_dark.png")
                 div.raiting(id="ratings_#{data.lang}") #{data.reviews} #{translation.ratings}
             div.button
                 div.icon

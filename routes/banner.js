@@ -43,30 +43,7 @@ router.get('/', function (req, res, next) {
 
     var q  = parseQuery(req.url);
 
-    var template = '';
-    if(q.format == '300_50'){
-        template = 'banner_300';
-    }else if(q.format == '320_50'){
-        template = 'banner_320';
-    }else if(q.format == '468_60'){
-        template = 'banner_468';
-    }else if(q.format == '728_90'){
-        template = 'banner_728';
-    }else if(q.format == '300_250'){
-        template = 'banner_300_250';
-    }else if(q.format == '300_250_2'){
-        template = 'banner_300_250_1';
-    }else if(q.format == '320_480'){
-        template = 'banner_320_480';
-    }else if(q.format == '480_320'){
-        template = 'banner_480_320';
-    }else if(q.format == '480_320_2'){
-        template = 'banner_480_320_2';
-    }else if(q.format == '400_300'){
-        template = 'banner_400_300';
-    }else if(q.format == '400_300_2'){
-        template = 'banner_400_300_2';
-    }
+    var template = 'banner_'+q.format;
 
     if(typeof translation[q.lang] == 'undefined'){
         var translate = translation['en'];
@@ -86,6 +63,9 @@ router.get('/', function (req, res, next) {
         }
         if (q.rate_text) {
             translate.ratings = q.rate_text;
+        }
+        if(q.button_text.length>7){
+            q.lang = 'ru';
         }
     }
 

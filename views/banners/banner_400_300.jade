@@ -10,9 +10,9 @@ block content
                 div.votes
                     div.star
                         -for (var x = 0; x < data.score; x++)
-                        img(src="./images/star_light.png")
+                            img(src="./images/star_light.png")
                         -for (var z = data.score; z < 5; z++)
-                        img(src="./images/star_dark.png")
+                            img(src="./images/star_dark.png")
                     div.raiting #{data.reviews} #{translation.ratings}
                 div.button
                     div.txt(id="install_#{data.lang}") #{translation.install}
