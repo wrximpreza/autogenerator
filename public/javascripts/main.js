@@ -52,6 +52,43 @@ $(document).ready(function() {
             }
         }
     );
+
+    $('.preview').on('click', function (event) {
+        event.stopPropagation();
+
+        if(!$('.block_input input[name=app]').val()){
+            showModal('Введите bundle_id приложения,<br/> которое вы ищете');
+            return false;
+        }
+
+        if($("#filled-in-box").prop('checked')){
+            if($(".input_texts input[name=title_text]").val()==''){
+                showModal('Введите название приложения(локализация)');
+                return false;
+            }
+            if($(".input_texts input[name=button_text]").val()==''){
+                showModal('Введите название кнопки(локализация)');
+                return false;
+            }
+            if($(".input_texts input[name=rate_text]").val()==''){
+                showModal('Введите рейтинг(локализация)');
+                return false;
+            }
+        }
+
+        var format = $(this).data('format');
+        var data = '/show?'+$('form.send_form').serialize();
+        data += '&format='+format;
+
+        var size = format.split('_');
+        $.featherlight({
+            iframe: data, iframeWidth: parseInt(size[0])+20,
+            iframeHeight: parseInt(size[1])+20
+        });
+
+    })
+
+
 });
 
 
@@ -78,7 +115,10 @@ function sendData() {
             return false;
         }
     }
-
+    if(!$("#send_mail").prop('checked') && !$("#download").prop('checked')){
+        showModal('Выберите вариант получения баннеров');
+        return false;
+    }
     if($("#send_mail").prop('checked')){
         if($(".result .email input").val()==''){
             showModal('Введите почту на которую <br/>отправлять сгенерированные баннеры');
@@ -88,10 +128,7 @@ function sendData() {
             return false;
         }
     }
-    if(!$("#send_mail").prop('checked') && !$("#download").prop('checked')){
-        showModal('Выберите вариант получения баннеров');
-        return false;
-    }
+
     $('#preloader').show();
     $('form.send_form').submit();
 

@@ -6,7 +6,7 @@ block content
             img(src=data.icon width="76" height="76")
         div.title
             span #{data.title}
-            div.description #{data.description}
+            div.description.hyphenate #{data.description}
         div.buttons
             div.button
                 div.os(id="install_#{data.lang}") #{translation.install}

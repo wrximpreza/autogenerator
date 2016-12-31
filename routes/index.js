@@ -77,6 +77,26 @@ function httpGet(format) {
     });
 
 }
+
+function httpBanner(format) {
+
+    var pairs = [];
+    pairs.push(['test=test']);
+    pairs.push(['format=' + format]);
+    for (var prop in data) {
+        if (data.hasOwnProperty(prop)) {
+            var k = encodeURIComponent(prop),
+                v = encodeURIComponent(data[prop]);
+            pairs.push(k + "=" + v);
+        }
+    }
+    var url = "?" + pairs.join("%26");
+    var size = format.split('_');
+
+    return data.host + '/banner' + url;
+
+}
+
 function sendEmail() {
     return new Promise(function (resolve) {
         var transporter = nodemailer.createTransport({
@@ -289,6 +309,69 @@ router.get('/', function (req, res, next) {
                         res.render('index', {lang: lang, formats: formats, status: '1', data: data});
                     }
             }).catch(function (e) {
+                console.log('There was an error fetching the application!', e);
+                res.render('error', {message: e.message});
+            });
+        }
+
+    }).get('/show', function (req, res, next) {
+        data = {};
+        data.images = [];
+
+        data.host = req.protocol + '://' + req.get('host');
+        data.app_id = req.query.app;
+        data.lang = req.query.lang;
+        data.format = req.query.format;
+        data.description_text = req.query['description_text[]'];
+
+        data.local = req.query.local;
+        if (typeof req.query.local == 'undefined') {
+            data.local = 0;
+        }
+
+        if (req.query.title_text) {
+            data.title_text = req.query.title_text;
+        }
+        if (req.query.button_text) {
+            data.button_text = req.query.button_text;
+        }
+        if (req.query.rate_text) {
+            data.rate_text = req.query.rate_text;
+        }
+
+        if (data.app_id.split('.').length >= 2) {
+            data.os = 'android';
+            gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.lang})
+                .then(function (app) {
+                    data.title = app.title;
+                    data.icon = app.icon;
+                    data.description = app.description;
+                    data.reviews = app.reviews;
+                    data.score = app.score;
+
+                    var href = httpBanner(data.format);
+                    res.redirect(href);
+                }).catch(function (e) {
+                console.log('There was an error fetching the application!', e.message);
+                res.render('error', {message: e.message});
+            });
+        } else {
+            data.app_id = data.app_id.substring(2, data.app_id.length);
+            data.os = 'apple';
+            var lg = data.lang;
+            if(data.lang == 'en'){
+                lg = 'us';
+            }
+            store.app({id: data.app_id, 'country': lg})
+                .then(function (app) {
+                    data.title = app.title;
+                    data.icon = app.icon;
+                    data.description = app.description;
+                    data.reviews = app.reviews;
+                    data.score = app.score;
+                    var href = httpBanner(data.format);
+                    res.redirect(href);
+                }).catch(function (e) {
                 console.log('There was an error fetching the application!', e);
                 res.render('error', {message: e.message});
             });
