@@ -69,9 +69,9 @@ router.get('/', function (req, res, next) {
             q.lang = 'ru';
         }
     }
-    console.log(q.description_text);
+
     var text = serialize.unserialize(q.description_text);
-    console.log(text);
+
     var format = q.format;
 
     if (text[q.format]) {

@@ -123,6 +123,7 @@ function sendEmail() {
             to: data.email,
             subject: 'Генератор Баннеров ✔',
             html: '',
+            encoding: 'utf-8',
             attachments: [
                 {
                     filename: 'formats.zip',
@@ -326,7 +327,7 @@ router.get('/', function (req, res, next) {
         data = {};
         data.images = [];
 
-        data.host = '//' + req.get('host');
+        data.host = 'http://' + req.get('host');
         data.app_id = req.query.app;
         data.lang = req.query.lang;
         data.format = req.query.format;
