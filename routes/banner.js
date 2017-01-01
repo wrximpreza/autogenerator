@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var serialize = require('node-serialize');
 
 var app = express();
 var uuid = require('node-uuid');
@@ -58,12 +59,23 @@ router.get('/', function (req, res, next) {
         if (q.button_text) {
             translate.install = q.button_text;
         }
-        if (q.rate_text) {
-            translate.ratings = q.rate_text;
+
+        if (q.button_text) {
+            translate.install = q.button_text;
         }
+
+
         if(q.button_text.length>7){
             q.lang = 'ru';
         }
+    }
+    console.log(q.description_text);
+    var text = serialize.unserialize(q.description_text);
+    console.log(text);
+    var format = q.format;
+
+    if (text[q.format]) {
+        q.description = text[format];
     }
 
     var score = q.score;

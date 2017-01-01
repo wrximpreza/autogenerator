@@ -6,7 +6,7 @@ var Promise = require('promise');
 var path = require('path');
 var app = express();
 var rmdir = require('rmdir');
-
+var serialize = require('node-serialize');
 
 var uuid = require('node-uuid');
 var cookieParser = require('cookie-parser');
@@ -162,7 +162,15 @@ router.get('/', function (req, res, next) {
         data.app_id = req.body.app;
         data.lang = req.body.lang;
         data.formats = req.body['format[]'];
-        data.description_text = req.body['description_text[]'];
+
+        var description = {};
+        formats.reduce(function (previousValue, currentValue) {
+            if(typeof req.body['description_text[' + currentValue + ']']!='undefined') {
+                description[currentValue] = req.body['description_text[' + currentValue + ']'];
+            }
+        });
+
+        data.description_text = serialize.serialize(description);
 
         data.send_mail = req.body.send_mail;
         if (typeof req.body.send_mail == 'undefined') {
@@ -322,13 +330,11 @@ router.get('/', function (req, res, next) {
         data.app_id = req.query.app;
         data.lang = req.query.lang;
         data.format = req.query.format;
-        data.description_text = req.query['description_text[]'];
-
+        data.description_text = serialize.serialize(req.query['description_text']);
         data.local = req.query.local;
         if (typeof req.query.local == 'undefined') {
             data.local = 0;
         }
-
         if (req.query.title_text) {
             data.title_text = req.query.title_text;
         }

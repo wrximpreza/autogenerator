@@ -23,6 +23,7 @@
     "rmdir": "1.2.0",
     "serve-favicon": "~2.3.0",
     "stylus": "0.54.5",
-    "webshot": "0.18.0"
+    "webshot": "0.18.0",
+    "node-serialize": "0.0.4"
   }
 }
