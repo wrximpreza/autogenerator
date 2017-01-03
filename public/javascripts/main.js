@@ -14,16 +14,10 @@ $(document).ready(function () {
 
         $(".boxes .box input:checkbox").prop('checked', $(this).prop("checked"));
         if ($("#filled-in-box").prop('checked')) {
-            $('.boxes .box').hover(function () {
-                $(this).find('.description').addClass('active');
-            }, function () {
-                $(this).find('.description').removeClass('active');
-            });
+            $(this).find('.description').addClass('active');
         }
         if (!$("#check_all").prop('checked')) {
             $('.boxes .box .description').removeClass('active');
-            $('.boxes .box').off('mouseenter mouseleave');
-            $('.boxes .box').off('hover');
         }
 
     });
@@ -33,11 +27,6 @@ $(document).ready(function () {
 
         if ($(this).prop('checked') && $("#filled-in-box").prop('checked')) {
             $(box).find('.description').addClass('active');
-            $(box).hover(function () {
-                $(box).find('.description').addClass('active');
-            }, function () {
-                $(box).find('.description').removeClass('active');
-            });
         } else {
             $(box).find('.description').removeClass('active');
             $(box).off('mouseenter mouseleave');
@@ -54,11 +43,7 @@ $(document).ready(function () {
 
             $('.boxes .box').each(function (index, value) {
                 if ($(this).find('.filled-in').prop('checked')) {
-                    $(this).hover(function () {
-                        $(this).find('.description').addClass('active');
-                    }, function () {
-                        $(this).find('.description').removeClass('active');
-                    });
+                    $(this).find('.description').addClass('active');
                 }
             });
 
@@ -67,8 +52,6 @@ $(document).ready(function () {
             $('.banners .no').hide();
 
             $('.boxes .box .description').removeClass('active');
-            $('.boxes .box').off('mouseenter mouseleave');
-            $('.boxes .box').off('hover');
 
         }
     });
