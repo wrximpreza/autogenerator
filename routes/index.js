@@ -67,6 +67,7 @@ function httpGet(format) {
 
             }
         };
+        console.log(data);
         webshot(data.host + '/banner' + url, data.dir + 'banner_' + format + '.png', options, function (err) {
             if (err) {
                 return console.log(err);
@@ -212,7 +213,7 @@ router.get('/', function (req, res, next) {
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;
-                    data.description = app.description;
+                    data.description = app.description.substr(0, 400);
                     data.reviews = app.reviews;
                     data.score = app.score;
                     if (!fs.existsSync(data.dir)) {
@@ -274,7 +275,7 @@ router.get('/', function (req, res, next) {
                 .then(function (app) {
                     data.title = app.title;
                     data.icon = app.icon;
-                    data.description = app.description;
+                    data.description = app.description.substr(0, 400);
                     data.reviews = app.reviews;
                     data.score = app.score;
                     if (!fs.existsSync(data.dir)) {
