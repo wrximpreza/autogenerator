@@ -331,7 +331,7 @@ router.get('/', function (req, res, next) {
         data.host = 'http://' + req.get('host');
         data.app_id = req.query.app;
         data.lang = req.query.lang;
-        data.format = req.query.format;
+        data.format = req.query.single_format;
         data.description_text = serialize.serialize(req.query['description_text']);
         data.local = req.query.local;
         if (typeof req.query.local == 'undefined') {
@@ -346,8 +346,9 @@ router.get('/', function (req, res, next) {
         if (req.query.rate_text) {
             data.rate_text = req.query.rate_text;
         }
-
-        if (data.app_id.split('.').length >= 2) {
+        console.log(data);
+        var app_id = data.app_id;
+        if (app_id.split('.').length >= 2) {
             data.os = 'android';
             gplay.app({appId: data.app_id, 'lang': data.lang, 'country': data.lang})
                 .then(function (app) {

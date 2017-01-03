@@ -118,8 +118,8 @@ $(document).ready(function () {
 
         var format = $(this).data('format');
         var data = '//' + location.host + '/show?' + $('form.send_form').serialize();
-        data += '&format=' + format;
-
+        data += '&single_format=' + format;
+        console.log(data);
         var size = format.split('_');
         $.featherlight({
             iframe: data,
