@@ -13,14 +13,17 @@ $(document).ready(function () {
     $("#check_all").on('change', function () {
 
         $(".boxes .box input:checkbox").prop('checked', $(this).prop("checked"));
+
         if ($("#filled-in-box").prop('checked')) {
-            $(this).find('.description').addClass('active');
+            $('.boxes .box .description').addClass('active');
         }
         if (!$("#check_all").prop('checked')) {
             $('.boxes .box .description').removeClass('active');
         }
 
+
     });
+
 
     $('.boxes .box .filled-in').on('change', function () {
         var box = $(this).parent().parent();
@@ -29,8 +32,6 @@ $(document).ready(function () {
             $(box).find('.description').addClass('active');
         } else {
             $(box).find('.description').removeClass('active');
-            $(box).off('mouseenter mouseleave');
-            $(box).off('hover');
         }
 
     });
