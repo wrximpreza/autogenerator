@@ -68,8 +68,9 @@ function httpGet(format) {
             }
         };
         webshot(data.host + '/banner' + url, data.dir + 'banner_' + format + '.png', options, function (err) {
-            if (err)
+            if (err) {
                 return console.log(err);
+            }
             data.images.push(data.dir + 'banner_' + format + '.png');
             resolve(data.dir + 'banner_' + format + '.png');
         });

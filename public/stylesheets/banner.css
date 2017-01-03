@@ -424,7 +424,7 @@ body {
 .block_320_250_1 .bottom .button .txt {
   background: #27ae60;
   font-size: 20px;
-  width: 82px;
+  width: 100px;
   float: left;
   height: 34px;
   line-height: 34px;
@@ -432,7 +432,7 @@ body {
 }
 .block_320_250_1 .bottom .button .icon {
   background: #2aba67;
-  width: 140px;
+  width: 122px;
   float: right;
   height: 34px;
   font-size: 12px;
@@ -975,7 +975,7 @@ body {
  */
 #install_ru,
 #install_fr {
-  font-size: 15px;
+  font-size: 14px;
 }
 .block_728 #install_ru,
 .block_728 #install_fr {
