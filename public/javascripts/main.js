@@ -1,5 +1,16 @@
 $(document).ready(function () {
 
+    $('.boxes .box .description textarea').on('click', function (event) {
+        event.stopPropagation();
+        if($(this).prop('readonly')){
+            showModal('Выберите баннер и сможете его редактировать');
+        }
+
+    });
+
+    $('.boxes .box .description textarea').attr("readonly","readonly");
+
+
     $('.input-field select, .icons').material_select();
     $('.tooltip').tooltipster({
         theme: 'tooltipster-shadow',
@@ -15,23 +26,23 @@ $(document).ready(function () {
         $(".boxes .box input:checkbox").prop('checked', $(this).prop("checked"));
 
         if ($("#filled-in-box").prop('checked')) {
-            $('.boxes .box .description').addClass('active');
+            $('.boxes .box .description textarea').removeAttr('readonly');
         }
         if (!$("#check_all").prop('checked')) {
-            $('.boxes .box .description').removeClass('active');
+            $('.boxes .box .description textarea').attr('readonly', 'readonly');
         }
-
 
     });
 
 
     $('.boxes .box .filled-in').on('change', function () {
+
         var box = $(this).parent().parent();
 
         if ($(this).prop('checked') && $("#filled-in-box").prop('checked')) {
-            $(box).find('.description').addClass('active');
+            $(box).find('.description textarea').removeAttr('readonly');
         } else {
-            $(box).find('.description').removeClass('active');
+            $(box).find('.description textarea').attr('readonly', 'readonly');
         }
 
     });
@@ -42,11 +53,12 @@ $(document).ready(function () {
             $('.banners .no').show();
 
 
-            $('.boxes .box').each(function (index, value) {
+            /*$('.boxes .box').each(function (index, value) {
                 if ($(this).find('.filled-in').prop('checked')) {
                     $(this).find('.description').addClass('active');
                 }
-            });
+            });*/
+            $('.boxes .box .description').addClass('active');
 
         } else {
             $('.banners .has').show();
